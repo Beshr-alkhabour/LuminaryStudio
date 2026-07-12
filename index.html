@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luminary Studio — Webdesign-Agentur | Where vision meets light.</title>
+  <meta name="description" content="Luminary Studio gestaltet und entwickelt maßgeschneiderte Websites und Marken für Unternehmen im DACH-Raum. Präzise, klar, hochwertig.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="#" class="logo" aria-label="Luminary Studio — Startseite">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D9A441" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1 L14.6 9.4 L23 12 L14.6 14.6 L12 23 L9.4 14.6 L1 12 L9.4 9.4 Z"/>
+        </svg>
+        <span class="wordmark">
+          <span>Luminary</span>
+          <span class="line2">Studio</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="#leistungen" data-en="Services">Leistungen</a></li>
+          <li><a href="#ueber-uns" data-en="About">Über uns</a></li>
+          <li><a href="#projekte" data-en="Work">Projekte</a></li>
+          <li><a href="#preise" data-en="Pricing">Preise</a></li>
+          <li><a href="#kontakt" data-en="Contact">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Sprache wechseln">EN</button>
+        <a href="#kontakt" class="btn btn-primary btn-cta-header" data-en="Start a Project">Projekt anfragen</a>
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <svg class="hero-spark s1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 1 L14.6 9.4 L23 12 L14.6 14.6 L12 23 L9.4 14.6 L1 12 L9.4 9.4 Z"/>
+      </svg>
+      <svg class="hero-spark s2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 1 L14.6 9.4 L23 12 L14.6 14.6 L12 23 L9.4 14.6 L1 12 L9.4 9.4 Z"/>
+      </svg>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow" data-en="Web design studio for the DACH region">Webdesign-Studio für den DACH-Raum</p>
+          <h1 data-en="Websites that make your business shine.">Websites, die Ihr Unternehmen zum Strahlen bringen.</h1>
+          <p class="tagline">Where vision meets light.</p>
+          <p class="lead" data-en="Luminary Studio designs and builds tailor-made websites and brands for small and medium-sized businesses — precise, clear, and with a standard of quality you can see.">
+            Luminary Studio gestaltet und entwickelt maßgeschneiderte Websites und Marken für kleine und mittlere Unternehmen — präzise, klar und mit einem Qualitätsanspruch, den man sieht.
+          </p>
+          <a href="#kontakt" class="btn btn-gold" data-en="Start a Project">Projekt anfragen</a>
+          <p class="hero-note" data-en="For restaurants, local shops, startups and independents in Austria, Germany and Switzerland.">
+            Für Restaurants, lokale Geschäfte, Start-ups und Selbstständige in Österreich, Deutschland und der Schweiz.
+          </p>
+        </div>
+
+        <div class="hero-bento" aria-label="Luminary Studio in Zahlen">
+          <div class="hero-tile tile-brand reveal">
+            <svg class="tile-spark" width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1 L14.6 9.4 L23 12 L14.6 14.6 L12 23 L9.4 14.6 L1 12 L9.4 9.4 Z"/>
+            </svg>
+            <p class="tile-brand-line">Where vision meets light.</p>
+          </div>
+          <div class="hero-tile reveal">
+            <span class="tile-stat">100%</span>
+            <span class="tile-label" data-en="hand-built, no templates">handgebaut, keine Vorlagen</span>
+          </div>
+          <div class="hero-tile reveal">
+            <span class="tile-stat">24 h</span>
+            <span class="tile-label" data-en="response time">Antwortzeit</span>
+          </div>
+          <div class="hero-tile tile-region reveal">
+            <span class="tile-stat">DACH</span>
+            <span class="tile-label">AT · DE · CH</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Services ============ -->
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-en="Services">Leistungen</p>
+          <h2 data-en="Everything your digital presence needs.">Alles, was Ihr digitaler Auftritt braucht.</h2>
+          <p data-en="From the first concept to long-term support — five services, one standard: quality.">
+            Vom ersten Konzept bis zur langfristigen Betreuung — fünf Leistungen, ein Anspruch: Qualität.
+          </p>
+        </div>
+
+        <div class="services-bento">
+          <article class="service-card feature reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 9h20"/>
+                <path d="M5 6.5h.01M7.5 6.5h.01M10 6.5h.01"/>
+                <path d="M6 13h6M6 16h9"/>
+              </svg>
+            </span>
+            <h3 data-en="Web Design &amp; Development">Webdesign &amp; Entwicklung</h3>
+            <p data-en="Custom websites, designed by hand and cleanly built — no template kits, no compromises. From concept and design to clean, fast, hand-coded implementation.">
+              Individuelle Websites, von Hand gestaltet und sauber entwickelt — keine Baukasten-Vorlagen, keine Kompromisse. Vom Konzept über das Design bis zur sauberen, schnellen Umsetzung von Hand.
+            </p>
+            <span class="feature-tag" data-en="Our core discipline">Unsere Kerndisziplin</span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12l4 6-10 12L2 9Z"/>
+                <path d="M2 9h20M12 21 8 9l4-6 4 6-4 12"/>
+              </svg>
+            </span>
+            <h3 data-en="Brand Identity &amp; Logo Design">Brand Identity &amp; Logodesign</h3>
+            <p data-en="A visual identity that makes your brand unmistakable — from the logo to the complete appearance.">
+              Ein visuelles Erscheinungsbild, das Ihre Marke unverwechselbar macht — vom Logo bis zum kompletten Auftritt.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="5.5"/>
+                <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+              </svg>
+            </span>
+            <h3 data-en="Landing Pages &amp; Sales Pages">Landing Pages &amp; Sales Pages</h3>
+            <p data-en="Focused pages with one goal: turning visitors into customers — for campaigns, launches and offers.">
+              Fokussierte Seiten mit einem Ziel: Besucher in Kunden verwandeln — für Kampagnen, Launches und Angebote.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a4.5 4.5 0 0 0-5.9 5.9L3 18l3 3 5.8-5.8a4.5 4.5 0 0 0 5.9-5.9L14.5 12 12 9.5Z"/>
+              </svg>
+            </span>
+            <h3 data-en="Maintenance &amp; Support">Wartung &amp; Support</h3>
+            <p data-en="We keep your website secure, up to date and fast — so you can focus on your business.">
+              Wir halten Ihre Website sicher, aktuell und schnell — damit Sie sich auf Ihr Geschäft konzentrieren können.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19a9 9 0 1 1 16 0"/>
+                <path d="M12 14l4.5-4.5"/>
+                <circle cx="12" cy="14" r="1.4" fill="currentColor"/>
+              </svg>
+            </span>
+            <h3 data-en="SEO Basics &amp; Performance">SEO-Basics &amp; Performance</h3>
+            <p data-en="Solid foundations for visibility: technical SEO, fast load times and strong Core Web Vitals.">
+              Solide Grundlagen für Sichtbarkeit: technisches SEO, schnelle Ladezeiten und starke Core Web Vitals.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section class="section" id="ueber-uns">
+      <div class="container about-bento">
+        <div class="about-intro reveal">
+          <p class="eyebrow" data-en="About us">Über uns</p>
+          <h2 data-en="A studio that brings light into the digital.">Ein Studio, das Licht ins Digitale bringt.</h2>
+          <p data-en="Luminary Studio is an independent web design studio for the German-speaking market. We work with businesses that value quality — from the restaurant around the corner to the growing startup. No bloated agency processes: direct collaboration, clear communication, and results that work.">
+            Luminary Studio ist ein unabhängiges Webdesign-Studio für den deutschsprachigen Raum. Wir arbeiten mit Unternehmen, die Wert auf Qualität legen — vom Restaurant um die Ecke bis zum wachsenden Start-up. Keine aufgeblähten Agentur-Prozesse: direkte Zusammenarbeit, klare Kommunikation und Ergebnisse, die wirken.
+          </p>
+        </div>
+
+        <aside class="founder-card reveal">
+          <div class="founder-photo">
+            <svg class="founder-fallback" viewBox="0 0 120 100" fill="currentColor" aria-hidden="true">
+              <circle cx="60" cy="34" r="20"/>
+              <path d="M20 100c0-22 18-36 40-36s40 14 40 36Z"/>
+            </svg>
+            <img class="founder-img" src="assets/founder.jpg" alt="Gründer von Luminary Studio" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="founder-meta">
+            <strong data-en="Founder &amp; Creative Director">Gründer &amp; Creative Director</strong>
+            <span>Luminary Studio</span>
+          </div>
+        </aside>
+
+        <div class="value-tiles">
+          <div class="value-tile reveal">
+            <span class="value-marker" aria-hidden="true"></span>
+            <h4 data-en="Precision">Präzision</h4>
+            <p data-en="Every detail has a reason. We design with care — from the grid to the last pixel.">
+              Jedes Detail hat einen Grund. Wir gestalten mit Sorgfalt — vom Raster bis zum letzten Pixel.
+            </p>
+          </div>
+          <div class="value-tile reveal">
+            <span class="value-marker" aria-hidden="true"></span>
+            <h4 data-en="Clarity">Klarheit</h4>
+            <p data-en="Understandable communication, transparent pricing, no surprises.">
+              Verständliche Kommunikation, transparente Preise, keine Überraschungen.
+            </p>
+          </div>
+          <div class="value-tile reveal">
+            <span class="value-marker" aria-hidden="true"></span>
+            <h4 data-en="Quality">Qualität</h4>
+            <p data-en="We never ship anything we don't stand behind. High standards are our default.">
+              Wir liefern nichts aus, hinter dem wir nicht stehen. Anspruch ist unser Standard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Portfolio ============ -->
+    <section class="section" id="projekte">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-en="Selected work">Ausgewählte Projekte</p>
+          <h2 data-en="Work that speaks for itself.">Arbeiten, die für sich sprechen.</h2>
+        </div>
+
+        <div class="filter-bar reveal" role="group" aria-label="Projekte filtern">
+          <button class="filter-btn active" data-filter="all" data-en="All">Alle</button>
+          <button class="filter-btn" data-filter="website">Websites</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="landing">Landing Pages</button>
+        </div>
+
+        <div class="work-bento">
+          <article class="work-card feature reveal" data-category="website">
+            <div class="work-thumb thumb-a" aria-hidden="true">
+              <svg viewBox="0 0 200 120" fill="none">
+                <rect x="8" y="6" width="184" height="108" rx="6" fill="rgba(247,245,240,0.07)"/>
+                <circle cx="20" cy="16" r="2.5" fill="#D9A441"/><circle cx="29" cy="16" r="2.5" fill="rgba(247,245,240,0.3)"/><circle cx="38" cy="16" r="2.5" fill="rgba(247,245,240,0.3)"/>
+                <rect x="20" y="30" width="90" height="9" rx="3" fill="rgba(247,245,240,0.85)"/>
+                <rect x="20" y="45" width="60" height="5" rx="2.5" fill="rgba(247,245,240,0.35)"/>
+                <rect x="20" y="60" width="34" height="11" rx="4" fill="#D9A441"/>
+                <rect x="20" y="84" width="50" height="22" rx="4" fill="rgba(247,245,240,0.14)"/>
+                <rect x="76" y="84" width="50" height="22" rx="4" fill="rgba(247,245,240,0.14)"/>
+                <rect x="132" y="84" width="50" height="22" rx="4" fill="rgba(247,245,240,0.14)"/>
+              </svg>
+            </div>
+            <div class="work-meta">
+              <h3>Restaurant Alpenblick</h3>
+              <span class="work-tag">Website</span>
+            </div>
+          </article>
+
+          <article class="work-card reveal" data-category="branding">
+            <div class="work-thumb thumb-b" aria-hidden="true">
+              <svg viewBox="0 0 200 120" fill="none">
+                <circle cx="64" cy="52" r="26" stroke="#D9A441" stroke-width="2.5"/>
+                <path d="M64 34 L68.4 47.6 L82 52 L68.4 56.4 L64 70 L59.6 56.4 L46 52 L59.6 47.6 Z" fill="#D9A441"/>
+                <rect x="104" y="38" width="66" height="8" rx="3" fill="rgba(247,245,240,0.85)"/>
+                <rect x="104" y="53" width="48" height="5" rx="2.5" fill="rgba(247,245,240,0.4)"/>
+                <rect x="46" y="92" width="16" height="10" rx="2" fill="#D9A441"/>
+                <rect x="68" y="92" width="16" height="10" rx="2" fill="rgba(247,245,240,0.8)"/>
+                <rect x="90" y="92" width="16" height="10" rx="2" fill="rgba(247,245,240,0.4)"/>
+                <rect x="112" y="92" width="16" height="10" rx="2" fill="rgba(247,245,240,0.15)"/>
+              </svg>
+            </div>
+            <div class="work-meta">
+              <h3>Atelier Nord</h3>
+              <span class="work-tag">Branding</span>
+            </div>
+          </article>
+
+          <a class="work-card reveal" data-category="website" href="https://grand.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="Fahrschule Grand — Projekt ansehen (öffnet in neuem Tab)">
+            <div class="work-thumb work-thumb-img" aria-hidden="true">
+              <img src="assets/projects/grand.jpg" alt="" width="1200" height="850" loading="lazy">
+            </div>
+            <div class="work-meta">
+              <h3>Fahrschule Grand
+                <svg class="work-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+              <span class="work-tag">Website</span>
+            </div>
+          </a>
+
+          <article class="work-card reveal" data-category="website">
+            <div class="work-thumb thumb-d" aria-hidden="true">
+              <svg viewBox="0 0 200 120" fill="none">
+                <rect x="8" y="6" width="184" height="108" rx="6" fill="rgba(247,245,240,0.07)"/>
+                <circle cx="20" cy="16" r="2.5" fill="#D9A441"/><circle cx="29" cy="16" r="2.5" fill="rgba(247,245,240,0.3)"/><circle cx="38" cy="16" r="2.5" fill="rgba(247,245,240,0.3)"/>
+                <rect x="20" y="30" width="76" height="48" rx="4" fill="rgba(247,245,240,0.14)"/>
+                <rect x="104" y="30" width="78" height="9" rx="3" fill="rgba(247,245,240,0.85)"/>
+                <rect x="104" y="46" width="60" height="5" rx="2.5" fill="rgba(247,245,240,0.35)"/>
+                <rect x="104" y="56" width="66" height="5" rx="2.5" fill="rgba(247,245,240,0.25)"/>
+                <rect x="104" y="70" width="30" height="10" rx="4" fill="#D9A441"/>
+                <rect x="20" y="88" width="162" height="18" rx="4" fill="rgba(247,245,240,0.1)"/>
+              </svg>
+            </div>
+            <div class="work-meta">
+              <h3>Café Goldrand</h3>
+              <span class="work-tag">Website</span>
+            </div>
+          </article>
+
+          <a class="work-card reveal" data-category="website" href="https://blumen-larose.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="Blumen La Rose — Projekt ansehen (öffnet in neuem Tab)">
+            <div class="work-thumb work-thumb-img" aria-hidden="true">
+              <img src="assets/projects/blumen.jpg" alt="" width="1200" height="850" loading="lazy">
+            </div>
+            <div class="work-meta">
+              <h3>Blumen La Rose
+                <svg class="work-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+              <span class="work-tag">Website</span>
+            </div>
+          </a>
+
+          <a class="work-card reveal" data-category="landing" href="https://msh-photovoltaik.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="MSH Photovoltaik — Projekt ansehen (öffnet in neuem Tab)">
+            <div class="work-thumb work-thumb-img" aria-hidden="true">
+              <img src="assets/projects/msh.jpg" alt="" width="1200" height="850" loading="lazy">
+            </div>
+            <div class="work-meta">
+              <h3>MSH Photovoltaik
+                <svg class="work-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+              <span class="work-tag">Landing Page</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Testimonials ============ -->
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-en="Testimonials">Kundenstimmen</p>
+          <h2 data-en="What our clients say.">Was unsere Kunden sagen.</h2>
+        </div>
+
+        <div class="quote-bento">
+          <figure class="quote-card feature reveal">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote data-en="Luminary Studio understood our vision better than we could put it into words ourselves. Since the relaunch, we get significantly more reservations through the website.">
+              Luminary Studio hat unsere Vision besser verstanden, als wir sie selbst formulieren konnten. Seit dem Relaunch bekommen wir deutlich mehr Reservierungen über die Website.
+            </blockquote>
+            <figcaption class="quote-author">
+              <strong>Markus Steiner</strong>
+              <span data-en="Owner, Restaurant Alpenblick · Innsbruck">Inhaber, Restaurant Alpenblick · Innsbruck</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote-card reveal">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote data-en="Professional, fast, and with a real eye for detail. Working together was effortless — the result speaks for itself.">
+              Professionell, schnell und mit einem echten Auge fürs Detail. Die Zusammenarbeit war unkompliziert — das Ergebnis spricht für sich.
+            </blockquote>
+            <figcaption class="quote-author">
+              <strong>Sophie Brandt</strong>
+              <span data-en="Founder, Atelier Nord · Hamburg">Gründerin, Atelier Nord · Hamburg</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote-card reveal">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote data-en="Finally an agency that listens. Clear pricing, clear communication, and a website we are proud of.">
+              Endlich eine Agentur, die zuhört. Klare Preise, klare Kommunikation und eine Website, auf die wir stolz sind.
+            </blockquote>
+            <figcaption class="quote-author">
+              <strong>Daniel Frei</strong>
+              <span data-en="Managing Director, Frei &amp; Partner · Zurich">Geschäftsführer, Frei &amp; Partner · Zürich</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Pricing ============ -->
+    <section class="section" id="preise">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-en="Packages &amp; pricing">Pakete &amp; Preise</p>
+          <h2 data-en="Transparent pricing, no surprises.">Transparente Preise, keine Überraschungen.</h2>
+          <p data-en="Three clear packages — and if none fits exactly, we'll tailor an offer to your project.">
+            Drei klare Pakete — und wenn keines exakt passt, schnüren wir ein individuelles Angebot für Ihr Projekt.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Basic</h3>
+            <p class="price"><span class="ab" data-en="from">ab</span>€ 1.490</p>
+            <p class="price-sub" data-en="The professional start">Der professionelle Einstieg</p>
+            <ul>
+              <li data-en="One-pager (up to 5 sections)">Onepager (bis zu 5 Sektionen)</li>
+              <li data-en="Responsive design">Responsives Design</li>
+              <li data-en="Contact form">Kontaktformular</li>
+              <li data-en="Basic SEO setup">Basis-SEO</li>
+              <li data-en="2 revision rounds">2 Korrekturrunden</li>
+              <li data-en="Handover &amp; introduction">Übergabe &amp; Einführung</li>
+            </ul>
+          </article>
+
+          <article class="price-card featured reveal">
+            <span class="badge" data-en="Popular">Beliebt</span>
+            <h3>Pro</h3>
+            <p class="price"><span class="ab" data-en="from">ab</span>€ 3.490</p>
+            <p class="price-sub" data-en="For growing businesses">Für wachsende Unternehmen</p>
+            <ul>
+              <li data-en="Up to 8 subpages">Bis zu 8 Unterseiten</li>
+              <li data-en="Individual design concept">Individuelles Designkonzept</li>
+              <li data-en="CMS for easy self-editing">CMS zur einfachen Selbstpflege</li>
+              <li data-en="SEO &amp; performance optimization">SEO- &amp; Performance-Optimierung</li>
+              <li data-en="3 revision rounds">3 Korrekturrunden</li>
+              <li data-en="3 months of support included">3 Monate Support inklusive</li>
+            </ul>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Premium</h3>
+            <p class="price"><span class="ab" data-en="from">ab</span>€ 6.900</p>
+            <p class="price-sub" data-en="The complete brand presence">Der komplette Markenauftritt</p>
+            <ul>
+              <li data-en="Everything in Pro">Alles aus Pro</li>
+              <li data-en="Brand identity &amp; logo design">Brand Identity &amp; Logodesign</li>
+              <li data-en="Landing pages for campaigns">Landing Pages für Kampagnen</li>
+              <li data-en="Strategy workshop">Strategie-Workshop</li>
+              <li data-en="12 months of priority support">12 Monate Priority-Support</li>
+              <li data-en="Ongoing optimization">Laufende Optimierung</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="pricing-note" data-en="All prices excl. VAT. Individual quotes on request.">
+          Alle Preise zzgl. USt. Individuelle Angebote auf Anfrage.
+        </p>
+        <div class="pricing-cta reveal">
+          <a href="#kontakt" class="btn btn-outline" data-en="Book a free consultation">Unverbindliches Erstgespräch vereinbaren</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact / CTA ============ -->
+    <section class="section contact" id="kontakt">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <p class="eyebrow" data-en="Contact">Kontakt</p>
+          <h2 data-en="Let's make your project shine.">Bringen wir Ihr Projekt zum Leuchten.</h2>
+          <p class="contact-intro" data-en="Tell us about your idea — we'll get back to you within 24 hours with an honest assessment and a clear next step.">
+            Erzählen Sie uns von Ihrem Vorhaben — wir melden uns innerhalb von 24 Stunden mit einer ehrlichen Einschätzung und einem klaren nächsten Schritt.
+          </p>
+
+          <div class="contact-direct">
+            <a href="mailto:hallo@luminary.studio">hallo@luminary.studio</a>
+          </div>
+
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Dribbble">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M5 8.5c4 1.5 9.5 1.5 13-2M19.5 15c-4.5-1.5-9-1-13.5 2.5M9 3.5c3 3.5 5 8 6 17"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="form-fields">
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Ihr Name" data-en-placeholder="Your name">
+              </div>
+              <div class="field">
+                <label for="email" data-en="Email">E-Mail</label>
+                <input type="email" id="email" name="email" required placeholder="name@firma.at" data-en-placeholder="name@company.com">
+              </div>
+            </div>
+            <div class="field">
+              <label for="projekt" data-en="Project type">Projektart</label>
+              <select id="projekt" name="projekt">
+                <option data-en="Website">Website</option>
+                <option data-en="Brand identity / logo">Brand Identity / Logo</option>
+                <option>Landing Page</option>
+                <option data-en="Maintenance / SEO">Wartung / SEO</option>
+                <option data-en="Other">Sonstiges</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="nachricht" data-en="Message">Nachricht</label>
+              <textarea id="nachricht" name="nachricht" required placeholder="Erzählen Sie uns kurz von Ihrem Projekt …" data-en-placeholder="Tell us briefly about your project …"></textarea>
+            </div>
+          </div>
+
+          <p class="form-success" role="status" data-en="Thank you! Your inquiry has been received — we'll get back to you within 24 hours.">
+            Vielen Dank! Ihre Anfrage ist bei uns eingegangen — wir melden uns innerhalb von 24 Stunden.
+          </p>
+
+          <button type="submit" class="btn btn-gold" data-en="Send inquiry">Anfrage senden</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo" aria-label="Luminary Studio">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#D9A441" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 1 L14.6 9.4 L23 12 L14.6 14.6 L12 23 L9.4 14.6 L1 12 L9.4 9.4 Z"/>
+            </svg>
+            <span class="wordmark">
+              <span>Luminary</span>
+              <span class="line2">Studio</span>
+            </span>
+          </a>
+          <p class="footer-tagline">Where vision meets light.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#leistungen" data-en="Services">Leistungen</a></li>
+            <li><a href="#ueber-uns" data-en="About">Über uns</a></li>
+            <li><a href="#projekte" data-en="Work">Projekte</a></li>
+            <li><a href="#preise" data-en="Pricing">Preise</a></li>
+            <li><a href="#kontakt" data-en="Contact">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Legal">Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html" data-en="Privacy Policy">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-en="© 2026 Luminary Studio. All rights reserved.">© 2026 Luminary Studio. Alle Rechte vorbehalten.</span>
+        <span data-en="Designed &amp; built in the DACH region.">Gestaltet &amp; entwickelt im DACH-Raum.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
