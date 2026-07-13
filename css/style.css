@@ -1058,16 +1058,6 @@ a.work-card:focus-visible .work-ext {
 
 .form-fields { display: grid; gap: 1.1rem; }
 
-/* Honeypot spam trap — hidden from humans, present for bots */
-.hp-field {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
 /* DSGVO consent checkbox */
 .consent {
   display: flex;
