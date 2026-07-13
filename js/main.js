@@ -7,7 +7,19 @@
   var LANG_KEY = "luminary-lang";
   var langToggle = document.getElementById("lang-toggle");
 
+  var EN_TITLE = "Luminary Studio — Web Design Agency | Where vision meets light.";
+  var DE_TITLE = document.title;
+
   function applyLang(lang) {
+    // Title + Meta-Description mitübersetzen
+    document.title = lang === "en" ? EN_TITLE : DE_TITLE;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      if (!metaDesc.dataset.deContent) metaDesc.dataset.deContent = metaDesc.content;
+      var enContent = metaDesc.getAttribute("data-en-content");
+      if (enContent) metaDesc.content = lang === "en" ? enContent : metaDesc.dataset.deContent;
+    }
+
     document.querySelectorAll("[data-en]").forEach(function (el) {
       // Cache the original German markup on first switch
       if (!el.dataset.de) el.dataset.de = el.innerHTML;
@@ -101,6 +113,11 @@
       workCards.forEach(function (card) {
         card.classList.toggle("hidden", filter !== "all" && card.dataset.category !== filter);
       });
+
+      // Im gefilterten Zustand die 2×2-Showcase-Kachel auf Normalgröße bringen,
+      // damit keine leeren Rasterzellen entstehen
+      var bento = document.querySelector(".work-bento");
+      if (bento) bento.classList.toggle("filtered", filter !== "all");
     });
   });
 
@@ -115,7 +132,31 @@
         form.reportValidity();
         return;
       }
-      form.classList.add("sent");
+
+      var btn = form.querySelector('button[type="submit"]');
+      var errorEl = form.querySelector(".form-error");
+      var endpoint = form.getAttribute("action");
+      var isEN = document.documentElement.lang === "en";
+
+      if (errorEl) errorEl.hidden = true;
+      var originalLabel = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = isEN ? "Sending…" : "Wird gesendet …";
+
+      fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("submit failed");
+          form.classList.add("sent");
+        })
+        .catch(function () {
+          if (errorEl) errorEl.hidden = false;
+          btn.disabled = false;
+          btn.innerHTML = originalLabel;
+        });
     });
   }
 })();

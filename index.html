@@ -519,7 +519,9 @@
 
         <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xqerkzqe" method="POST" novalidate>
           <input type="hidden" name="_subject" value="Neue Anfrage über luminary.studio">
-          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div style="display:none" aria-hidden="true">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-fields">
             <div class="form-row">
               <div class="field">
