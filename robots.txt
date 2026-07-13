@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /assets/logo/og.html
+Disallow: /assets/logo/profil.html
+
+Sitemap: https://luminary.studio/sitemap.xml

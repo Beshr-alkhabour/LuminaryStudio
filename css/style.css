@@ -4,6 +4,44 @@
    Type: Space Grotesk (headlines) · Inter (body)
    ========================================================================== */
 
+/* ---------- Self-hosted fonts (DSGVO: keine Google-Server) ---------- */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/Inter-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/Inter-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/Inter-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/SpaceGrotesk-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/SpaceGrotesk-700.woff2") format("woff2");
+}
+
 :root {
   --navy: #0C2340;
   --navy-soft: #16324F;
@@ -259,6 +297,11 @@ textarea:focus-visible,
 }
 
 .lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   font-family: var(--font-head);
   font-size: 0.82rem;
   font-weight: 700;
@@ -589,6 +632,9 @@ textarea:focus-visible,
 }
 
 .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-head);
   font-size: 0.86rem;
   font-weight: 500;
@@ -634,6 +680,19 @@ textarea:focus-visible,
 .work-card.feature .work-thumb { aspect-ratio: auto; flex: 1; min-height: 260px; }
 .work-card.feature .work-meta { padding: 1.3rem 1.6rem 1.5rem; }
 .work-card.feature .work-meta h3 { font-size: 1.2rem; }
+
+/* Gefilterter Zustand: Showcase-Kachel auf Normalgröße, keine Rasterlücken */
+.work-bento.filtered .work-card.feature {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+.work-bento.filtered .work-card.feature .work-thumb {
+  aspect-ratio: 16 / 10.5;
+  flex: none;
+  min-height: 0;
+}
+.work-bento.filtered .work-card.feature .work-meta { padding: 1.1rem 1.4rem 1.25rem; }
+.work-bento.filtered .work-card.feature .work-meta h3 { font-size: 1.02rem; }
 
 .work-card:hover {
   transform: translateY(-5px);
@@ -963,7 +1022,7 @@ a.work-card:focus-visible .work-ext {
 .field select,
 .field textarea {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem; /* ≥16px verhindert iOS-Auto-Zoom beim Fokussieren */
   color: var(--ink);
   background: var(--offwhite);
   border: 1px solid var(--line);
@@ -998,6 +1057,56 @@ a.work-card:focus-visible .work-ext {
 .contact-form.sent .btn { display: none; }
 
 .form-fields { display: grid; gap: 1.1rem; }
+
+/* Honeypot spam trap — hidden from humans, present for bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* DSGVO consent checkbox */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.consent input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.12rem;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.consent a { color: var(--steel); text-decoration: underline; }
+.consent a:hover { color: var(--navy); }
+
+/* Error message (submit failure) */
+.form-error {
+  background: rgba(192, 57, 43, 0.08);
+  border: 1px solid rgba(192, 57, 43, 0.4);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.2rem;
+  font-size: 0.94rem;
+  color: #A5281B;
+}
+
+/* Sending state */
+.btn:disabled,
+.btn:disabled:hover {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
 
 /* ---------- Footer ---------- */
 

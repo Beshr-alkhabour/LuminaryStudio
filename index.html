@@ -4,10 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luminary Studio — Webdesign-Agentur | Where vision meets light.</title>
-  <meta name="description" content="Luminary Studio gestaltet und entwickelt maßgeschneiderte Websites und Marken für Unternehmen im DACH-Raum. Präzise, klar, hochwertig.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Luminary Studio gestaltet und entwickelt maßgeschneiderte Websites und Marken für Unternehmen im DACH-Raum. Präzise, klar, hochwertig." data-en-content="Luminary Studio designs and builds tailor-made websites and brands for businesses in the DACH region. Precise, clear, high-end.">
+
+  <link rel="canonical" href="https://luminary.studio/">
+  <meta name="theme-color" content="#0C2340">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luminary.studio/">
+  <meta property="og:title" content="Luminary Studio — Webdesign-Agentur | Where vision meets light.">
+  <meta property="og:description" content="Maßgeschneiderte Websites und Marken für Unternehmen im DACH-Raum. Präzise, klar, hochwertig.">
+  <meta property="og:image" content="https://luminary.studio/assets/logo/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_AT">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Strukturierte Daten für Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Luminary Studio",
+    "description": "Webdesign-Agentur für KMU, Restaurants, lokale Geschäfte und Start-ups im DACH-Raum.",
+    "url": "https://luminary.studio/",
+    "email": "hallo@luminary.studio",
+    "telephone": "+43 681 20491565",
+    "founder": { "@type": "Person", "name": "Beshr Alkhabour" },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Handelskai 214",
+      "postalCode": "1020",
+      "addressLocality": "Wien",
+      "addressCountry": "AT"
+    },
+    "areaServed": ["AT", "DE", "CH"],
+    "priceRange": "€€",
+    "sameAs": ["https://www.instagram.com/luminary.studio1/"]
+  }
+  </script>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -467,37 +507,28 @@
           </div>
 
           <div class="social-links">
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/luminary.studio1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram — Luminary Studio (öffnet in neuem Tab)">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <rect x="3" y="3" width="18" height="18" rx="5"/>
                 <circle cx="12" cy="12" r="4"/>
                 <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/>
               </svg>
             </a>
-            <a href="#" aria-label="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="Dribbble">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M5 8.5c4 1.5 9.5 1.5 13-2M19.5 15c-4.5-1.5-9-1-13.5 2.5M9 3.5c3 3.5 5 8 6 17"/>
-              </svg>
-            </a>
           </div>
         </div>
 
-        <form class="contact-form reveal" id="contact-form" novalidate>
+        <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xqerkzqe" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Neue Anfrage über luminary.studio">
+          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-fields">
             <div class="form-row">
               <div class="field">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Ihr Name" data-en-placeholder="Your name">
+                <input type="text" id="name" name="name" required autocomplete="name" placeholder="Ihr Name" data-en-placeholder="Your name">
               </div>
               <div class="field">
                 <label for="email" data-en="Email">E-Mail</label>
-                <input type="email" id="email" name="email" required placeholder="name@firma.at" data-en-placeholder="name@company.com">
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="name@firma.at" data-en-placeholder="name@company.com">
               </div>
             </div>
             <div class="field">
@@ -514,10 +545,18 @@
               <label for="nachricht" data-en="Message">Nachricht</label>
               <textarea id="nachricht" name="nachricht" required placeholder="Erzählen Sie uns kurz von Ihrem Projekt …" data-en-placeholder="Tell us briefly about your project …"></textarea>
             </div>
+            <label class="consent">
+              <input type="checkbox" id="datenschutz" name="datenschutz" required>
+              <span data-en='I have read the <a href="datenschutz.html" target="_blank" rel="noopener">privacy policy</a> and agree.'>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme zu.</span>
+            </label>
           </div>
 
           <p class="form-success" role="status" data-en="Thank you! Your inquiry has been received — we'll get back to you within 24 hours.">
             Vielen Dank! Ihre Anfrage ist bei uns eingegangen — wir melden uns innerhalb von 24 Stunden.
+          </p>
+
+          <p class="form-error" role="alert" hidden data-en="Something went wrong. Please try again or email us directly at hallo@luminary.studio.">
+            Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an hallo@luminary.studio.
           </p>
 
           <button type="submit" class="btn btn-gold" data-en="Send inquiry">Anfrage senden</button>
