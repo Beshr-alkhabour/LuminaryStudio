@@ -1,88 +1,96 @@
-/* Luminary Studio — main.js */
+/* Luminary Studio v2 — main.js
+   Sprach-Toggle (DE/EN), Mobile-Nav, Scroll-Reveals, Portfolio-Filter, Kontaktformular */
 (function () {
   "use strict";
 
-  /* ---------- Language toggle (DE default, EN in data-en attributes) ---------- */
-
   var LANG_KEY = "luminary-lang";
-  var langToggle = document.getElementById("lang-toggle");
 
-  var EN_TITLE = "Luminary Studio — Web Design Agency | Where vision meets light.";
-  var DE_TITLE = document.title;
+  /* ---------- Sprach-Toggle ---------- */
+  var langToggle = document.getElementById("lang-toggle");
+  var currentLang = "de";
 
   function applyLang(lang) {
-    // Title + Meta-Description mitübersetzen
-    document.title = lang === "en" ? EN_TITLE : DE_TITLE;
-    var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      if (!metaDesc.dataset.deContent) metaDesc.dataset.deContent = metaDesc.content;
-      var enContent = metaDesc.getAttribute("data-en-content");
-      if (enContent) metaDesc.content = lang === "en" ? enContent : metaDesc.dataset.deContent;
-    }
+    currentLang = lang;
+    document.documentElement.lang = lang;
 
     document.querySelectorAll("[data-en]").forEach(function (el) {
-      // Cache the original German markup on first switch
-      if (!el.dataset.de) el.dataset.de = el.innerHTML;
-      el.innerHTML = lang === "en" ? el.dataset.en : el.dataset.de;
+      // Deutsches Original beim ersten Wechsel sichern
+      if (!el.hasAttribute("data-de")) {
+        el.setAttribute("data-de", el.innerHTML);
+      }
+      el.innerHTML = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-de");
     });
 
     document.querySelectorAll("[data-en-placeholder]").forEach(function (el) {
-      if (!el.dataset.dePlaceholder) el.dataset.dePlaceholder = el.placeholder;
-      el.placeholder = lang === "en" ? el.dataset.enPlaceholder : el.dataset.dePlaceholder;
+      if (!el.hasAttribute("data-de-placeholder")) {
+        el.setAttribute("data-de-placeholder", el.getAttribute("placeholder") || "");
+      }
+      el.setAttribute(
+        "placeholder",
+        lang === "en" ? el.getAttribute("data-en-placeholder") : el.getAttribute("data-de-placeholder")
+      );
     });
 
-    document.documentElement.lang = lang;
-    if (langToggle) langToggle.textContent = lang === "en" ? "DE" : "EN";
-    try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* private mode */ }
+    if (langToggle) {
+      langToggle.textContent = lang === "en" ? "DE" : "EN";
+      langToggle.setAttribute(
+        "aria-label",
+        lang === "en" ? "Zur deutschen Version wechseln" : "Switch to English"
+      );
+    }
+
+    try {
+      localStorage.setItem(LANG_KEY, lang);
+    } catch (e) {
+      /* privater Modus o. Ä. — Toggle funktioniert trotzdem */
+    }
   }
 
   if (langToggle) {
     langToggle.addEventListener("click", function () {
-      applyLang(document.documentElement.lang === "en" ? "de" : "en");
+      applyLang(currentLang === "de" ? "en" : "de");
     });
   }
 
-  var savedLang = null;
-  try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) { /* private mode */ }
-  if (savedLang === "en") applyLang("en");
+  try {
+    if (localStorage.getItem(LANG_KEY) === "en") {
+      applyLang("en");
+    }
+  } catch (e) { /* noop */ }
 
-  /* ---------- Mobile navigation ---------- */
+  /* ---------- Header-Zustand ---------- */
+  var header = document.getElementById("site-header");
+  function onScroll() {
+    if (header) header.classList.toggle("scrolled", window.scrollY > 8);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  var navToggle = document.getElementById("nav-toggle");
-  var mainNav = document.getElementById("main-nav");
+  /* ---------- Mobile-Nav ---------- */
+  var burger = document.getElementById("nav-burger");
+  var nav = document.getElementById("main-nav");
 
-  if (navToggle && mainNav) {
-    navToggle.addEventListener("click", function () {
-      var open = mainNav.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  if (burger && nav) {
+    burger.addEventListener("click", function () {
+      var open = nav.classList.toggle("open");
+      burger.setAttribute("aria-expanded", String(open));
     });
 
-    mainNav.querySelectorAll("a").forEach(function (link) {
+    nav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
-        mainNav.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
+        nav.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
       });
     });
   }
 
-  /* ---------- Header shadow on scroll ---------- */
+  /* ---------- Scroll-Reveals ---------- */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reveals = document.querySelectorAll(".reveal");
 
-  var header = document.querySelector(".site-header");
-
-  function onScroll() {
-    header.classList.toggle("scrolled", window.scrollY > 10);
-  }
-
-  if (header) {
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
-
-  /* ---------- Reveal on scroll ---------- */
-
-  var revealEls = document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window) {
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (el) { el.classList.add("visible"); });
+  } else {
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -92,70 +100,89 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
-    revealEls.forEach(function (el) { observer.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add("visible"); });
+    reveals.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---------- Portfolio filter ---------- */
-
+  /* ---------- Portfolio-Filter ---------- */
   var filterBtns = document.querySelectorAll(".filter-btn");
-  var workCards = document.querySelectorAll(".work-card");
+  var projectCards = document.querySelectorAll(".project-card");
 
   filterBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      filterBtns.forEach(function (b) { b.classList.remove("active"); });
-      btn.classList.add("active");
+      var filter = btn.getAttribute("data-filter");
 
-      var filter = btn.dataset.filter;
-      workCards.forEach(function (card) {
-        card.classList.toggle("hidden", filter !== "all" && card.dataset.category !== filter);
+      filterBtns.forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b === btn));
       });
 
-      // Im gefilterten Zustand die 2×2-Showcase-Kachel auf Normalgröße bringen,
-      // damit keine leeren Rasterzellen entstehen
-      var bento = document.querySelector(".work-bento");
-      if (bento) bento.classList.toggle("filtered", filter !== "all");
+      projectCards.forEach(function (card) {
+        var show = filter === "all" || card.getAttribute("data-cat") === filter;
+        card.classList.toggle("hidden", !show);
+      });
     });
   });
 
-  /* ---------- Contact form (front-end demo) ---------- */
+  /* ---------- Kontaktformular (Formspree, AJAX) ---------- */
+  var form = document.getElementById("kontakt-form");
+  var status = document.getElementById("form-status");
 
-  var form = document.getElementById("contact-form");
+  function setStatus(type, de, en) {
+    if (!status) return;
+    status.className = "form-status " + type;
+    status.setAttribute("data-en", en);
+    status.setAttribute("data-de", de);
+    status.innerHTML = currentLang === "en" ? en : de;
+  }
 
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      // Honeypot: still verwerfen
+      var gotcha = form.querySelector('[name="_gotcha"]');
+      if (gotcha && gotcha.value) return;
+
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      var btn = form.querySelector('button[type="submit"]');
-      var errorEl = form.querySelector(".form-error");
-      var endpoint = form.getAttribute("action");
-      var isEN = document.documentElement.lang === "en";
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      setStatus("", "Wird gesendet …", "Sending …");
 
-      if (errorEl) errorEl.hidden = true;
-      var originalLabel = btn.innerHTML;
-      btn.disabled = true;
-      btn.innerHTML = isEN ? "Sending…" : "Wird gesendet …";
-
-      fetch(endpoint, {
+      fetch(form.action, {
         method: "POST",
         body: new FormData(form),
-        headers: { "Accept": "application/json" }
+        headers: { Accept: "application/json" }
       })
         .then(function (res) {
-          if (!res.ok) throw new Error("submit failed");
-          form.classList.add("sent");
+          if (res.ok) {
+            form.reset();
+            setStatus(
+              "ok",
+              "Danke! Ihre Nachricht ist angekommen — wir melden uns innerhalb von 24 Stunden.",
+              "Thank you! Your message has been received — we'll get back to you within 24 hours."
+            );
+          } else {
+            setStatus(
+              "err",
+              "Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie an hallo@luminary.studio.",
+              "Something went wrong. Please try again or email hallo@luminary.studio."
+            );
+          }
         })
         .catch(function () {
-          if (errorEl) errorEl.hidden = false;
-          btn.disabled = false;
-          btn.innerHTML = originalLabel;
+          setStatus(
+            "err",
+            "Keine Verbindung. Bitte prüfen Sie Ihr Internet und versuchen Sie es erneut.",
+            "No connection. Please check your internet and try again."
+          );
+        })
+        .then(function () {
+          if (submitBtn) submitBtn.disabled = false;
         });
     });
   }
