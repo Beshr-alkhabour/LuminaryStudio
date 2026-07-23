@@ -375,17 +375,58 @@ h4 {
   pointer-events: none;
 }
 
+/* Glow-Pool am unteren Ende der Hero — hier "landet" das Licht.
+   Helligkeit folgt der Beam-Position (--beam-pos 0..1): unten = heller. */
 .hero::after {
   content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(640px, 85%);
+  height: 190px;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%, rgba(217, 164, 65, 0.22), transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: calc(0.4 + var(--beam-pos, 0) * 0.6);
+  transition: opacity 240ms ease-out;
+}
+
+/* Vertikaler Lichtschacht + herabwandernder Lichtpunkt */
+.hero-beam {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1px;
-  height: 34%;
-  background: linear-gradient(180deg, var(--gold), transparent);
-  opacity: 0.7;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(217, 164, 65, 0.32),
+    rgba(217, 164, 65, 0.05) 55%,
+    transparent 80%
+  );
+  box-shadow: 0 0 22px 1px rgba(217, 164, 65, 0.1);
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Herabwandernder Lichtpunkt — Position folgt dem Scroll (--beam-pos 0..1).
+   Nach unten scrollen = Punkt wandert nach unten, nach oben = nach oben.
+   Die Transition sorgt fürs sanfte Nachziehen. */
+.hero-beam::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 5px;
+  height: 30%;
+  transform: translate(-50%, calc(-50% + (var(--beam-pos, 0) * 383%)));
+  background: linear-gradient(180deg, transparent, var(--gold-bright) 50%, transparent);
+  filter: blur(2px);
+  border-radius: 50%;
+  will-change: transform;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-inner {
@@ -634,14 +675,38 @@ h4 {
   border-bottom: 1px solid var(--border);
 }
 
-.project-thumb svg {
+.project-thumb svg,
+.project-thumb img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-card:hover .project-thumb svg {
+.project-card:hover .project-thumb svg,
+.project-card:hover .project-thumb img {
   transform: scale(1.04);
+}
+
+/* Klickbare Referenz-Karten */
+a.project-card {
+  cursor: pointer;
+}
+
+.project-meta h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-ext {
+  color: var(--text-muted);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.project-card:hover .project-ext {
+  color: var(--gold);
+  transform: translate(2px, -2px);
 }
 
 .project-meta {
@@ -763,6 +828,11 @@ h4 {
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 0.2rem;
+}
+
+.price-tag.on-request {
+  font-size: 1.4rem;
+  color: var(--gold);
 }
 
 .price-note {
@@ -1125,16 +1195,98 @@ h4 {
   margin: 1rem 0 2rem;
 }
 
-/* ---------- Reveal animations ---------- */
+/* ---------- Scroll progress bar ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 200;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  box-shadow: 0 0 12px rgba(217, 164, 65, 0.6);
+  will-change: transform;
+}
+
+/* ---------- Reveal animations (scroll) ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 550ms ease, transform 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(28px);
+  transition: opacity 650ms ease, transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 75ms);
+}
+
+.reveal-left {
+  transform: translateX(-34px);
+}
+
+.reveal-right {
+  transform: translateX(34px);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: none;
+}
+
+/* ---------- Hero entrance (on load) ---------- */
+.hero-inner > * {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: heroIn 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-inner > *:nth-child(1) { animation-delay: 120ms; }
+.hero-inner > *:nth-child(2) { animation-delay: 240ms; }
+.hero-inner > *:nth-child(3) { animation-delay: 360ms; }
+.hero-inner > *:nth-child(4) { animation-delay: 480ms; }
+.hero-inner > *:nth-child(5) { animation-delay: 620ms; }
+
+@keyframes heroIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Parallax + breathing glow on the hero light source */
+.hero::before {
+  transform: translateY(var(--glow-shift, 0px));
+  will-change: transform, opacity;
+  animation: glowBreath 6.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowBreath {
+  from { opacity: 0.72; }
+  to { opacity: 1; }
+}
+
+/* ---------- Process light-timeline draw-in ---------- */
+.process-step::before {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 75ms + 120ms);
+}
+
+.process-step::after {
+  transform: scale(0);
+  transition: transform 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(var(--i, 0) * 75ms + 480ms);
+}
+
+.process-step.visible::before {
+  transform: scaleX(1);
+}
+
+.process-step.visible::after {
+  transform: scale(1);
 }
 
 /* ---------- Responsive ---------- */
@@ -1203,11 +1355,41 @@ h4 {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
+  .reveal,
+  .hero-inner > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero::before {
+    transform: none !important;
+  }
+
+  .hero-beam::after {
+    animation: none !important;
+    opacity: 0.4 !important;
+    transform: translate(-50%, 120%) !important;
+  }
+
+  .hero::after {
+    animation: none !important;
+    opacity: 0.6 !important;
+  }
+
+  .process-step::before {
+    transform: scaleX(1) !important;
+  }
+
+  .process-step::after {
+    transform: scale(1) !important;
+  }
+
+  .scroll-progress {
+    display: none;
   }
 }

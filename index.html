@@ -38,6 +38,8 @@
 </head>
 <body>
 
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ================= Header ================= -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
@@ -74,6 +76,7 @@
 
     <!-- ================= Hero ================= -->
     <section class="hero">
+      <div class="hero-beam" aria-hidden="true"></div>
       <div class="container hero-inner">
         <p class="hero-badge">
           <span class="dot" aria-hidden="true"></span>
@@ -179,74 +182,81 @@
         <div class="section-head reveal">
           <p class="kicker" data-en="Work">Projekte</p>
           <h2 data-en="Selected work">Ausgewählte Arbeiten</h2>
-          <p data-en="Every project is a stage — here is a selection.">Jedes Projekt ist eine Bühne — hier eine Auswahl.</p>
+          <p data-en="Real client sites and concept studies — a selection.">Echte Kundenseiten und Konzeptstudien — eine Auswahl.</p>
         </div>
 
         <div class="filter-bar reveal" role="group" aria-label="Projekte filtern">
           <button class="filter-btn" data-filter="all" aria-pressed="true" data-en="All">Alle</button>
-          <button class="filter-btn" data-filter="restaurant" aria-pressed="false">Restaurants</button>
-          <button class="filter-btn" data-filter="shop" aria-pressed="false">Shops</button>
-          <button class="filter-btn" data-filter="startup" aria-pressed="false">Start-ups</button>
+          <button class="filter-btn" data-filter="kunde" aria-pressed="false" data-en="Client work">Kundenprojekte</button>
+          <button class="filter-btn" data-filter="konzept" aria-pressed="false" data-en="Concepts">Konzepte</button>
         </div>
 
         <div class="projects-grid">
-          <article class="project-card reveal" data-cat="restaurant">
+          <!-- Echte Kundenreferenzen (klickbar, öffnen in neuem Tab) -->
+          <a class="project-card reveal" data-cat="kunde" href="https://grand.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="Fahrschule Grand — Projekt in neuem Tab öffnen">
+            <div class="project-thumb">
+              <img src="assets/projects/grand.jpg" alt="Website der Fahrschule Grand — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+            </div>
+            <div class="project-meta">
+              <span class="cat">Website</span>
+              <h3>Fahrschule Grand
+                <svg class="project-ext" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+            </div>
+          </a>
+
+          <a class="project-card reveal" data-cat="kunde" href="https://blumen-larose.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="Blumen La Rose — Projekt in neuem Tab öffnen">
+            <div class="project-thumb">
+              <img src="assets/projects/blumen.jpg" alt="Website von Blumen La Rose — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+            </div>
+            <div class="project-meta">
+              <span class="cat">Website</span>
+              <h3>Blumen La Rose
+                <svg class="project-ext" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+            </div>
+          </a>
+
+          <a class="project-card reveal" data-cat="kunde" href="https://msh-photovoltaik.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="MSH Photovoltaik — Projekt in neuem Tab öffnen">
+            <div class="project-thumb">
+              <img src="assets/projects/msh.jpg" alt="Landing Page von MSH Photovoltaik — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+            </div>
+            <div class="project-meta">
+              <span class="cat" data-en="Landing Page">Landing Page</span>
+              <h3>MSH Photovoltaik
+                <svg class="project-ext" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+            </div>
+          </a>
+
+          <!-- Konzeptstudien (fiktiv, abstrakte SVG-Wireframes) -->
+          <article class="project-card reveal" data-cat="konzept">
             <div class="project-thumb" aria-hidden="true">
               <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="#0A1626"/><rect x="24" y="22" width="120" height="14" rx="4" fill="#D9A441" opacity="0.85"/><rect x="24" y="48" width="200" height="8" rx="3" fill="#44607D"/><rect x="24" y="62" width="160" height="8" rx="3" fill="#44607D" opacity="0.6"/><rect x="24" y="92" width="86" height="66" rx="8" fill="#0C2340"/><rect x="118" y="92" width="86" height="66" rx="8" fill="#0C2340"/><rect x="212" y="92" width="86" height="66" rx="8" fill="#0C2340"/><rect x="36" y="104" width="60" height="6" rx="2" fill="#D9A441" opacity="0.5"/><rect x="130" y="104" width="60" height="6" rx="2" fill="#D9A441" opacity="0.5"/><rect x="224" y="104" width="60" height="6" rx="2" fill="#D9A441" opacity="0.5"/><circle cx="286" cy="30" r="10" fill="none" stroke="#D9A441" stroke-width="2"/></svg>
             </div>
             <div class="project-meta">
-              <span class="cat">Restaurant</span>
+              <span class="cat" data-en="Concept">Konzept</span>
               <h3>Trattoria Lumen</h3>
             </div>
           </article>
 
-          <article class="project-card reveal" data-cat="startup">
+          <article class="project-card reveal" data-cat="konzept">
             <div class="project-thumb" aria-hidden="true">
               <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="#0A1626"/><rect x="24" y="24" width="80" height="10" rx="3" fill="#D9A441" opacity="0.85"/><rect x="24" y="56" width="150" height="16" rx="4" fill="#F7F5F0" opacity="0.9"/><rect x="24" y="80" width="120" height="8" rx="3" fill="#44607D"/><rect x="24" y="106" width="64" height="22" rx="11" fill="#D9A441" opacity="0.9"/><rect x="190" y="44" width="106" height="112" rx="10" fill="#0C2340"/><polyline points="204,130 226,104 248,116 270,84" fill="none" stroke="#D9A441" stroke-width="2.5" stroke-linecap="round"/></svg>
             </div>
             <div class="project-meta">
-              <span class="cat">Start-up</span>
+              <span class="cat" data-en="Concept">Konzept</span>
               <h3>Nexa Analytics</h3>
             </div>
           </article>
 
-          <article class="project-card reveal" data-cat="shop">
+          <article class="project-card reveal" data-cat="konzept">
             <div class="project-thumb" aria-hidden="true">
               <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="#0A1626"/><rect x="24" y="22" width="100" height="12" rx="4" fill="#D9A441" opacity="0.85"/><rect x="24" y="52" width="272" height="1.5" fill="#44607D" opacity="0.5"/><rect x="24" y="70" width="62" height="78" rx="8" fill="#0C2340"/><rect x="94" y="70" width="62" height="78" rx="8" fill="#0C2340"/><rect x="164" y="70" width="62" height="78" rx="8" fill="#0C2340"/><rect x="234" y="70" width="62" height="78" rx="8" fill="#0C2340"/><rect x="32" y="126" width="46" height="6" rx="2" fill="#D9A441" opacity="0.55"/><rect x="102" y="126" width="46" height="6" rx="2" fill="#D9A441" opacity="0.55"/><rect x="172" y="126" width="46" height="6" rx="2" fill="#D9A441" opacity="0.55"/><rect x="242" y="126" width="46" height="6" rx="2" fill="#D9A441" opacity="0.55"/><rect x="24" y="164" width="120" height="8" rx="3" fill="#44607D" opacity="0.6"/></svg>
             </div>
             <div class="project-meta">
-              <span class="cat">Shop</span>
+              <span class="cat" data-en="Concept">Konzept</span>
               <h3>Vienna Vintage</h3>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-cat="restaurant">
-            <div class="project-thumb" aria-hidden="true">
-              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="#0A1626"/><circle cx="160" cy="72" r="34" fill="none" stroke="#D9A441" stroke-width="2" opacity="0.8"/><rect x="120" y="118" width="80" height="10" rx="4" fill="#F7F5F0" opacity="0.9"/><rect x="100" y="138" width="120" height="7" rx="3" fill="#44607D"/><rect x="132" y="158" width="56" height="20" rx="10" fill="#D9A441" opacity="0.9"/></svg>
-            </div>
-            <div class="project-meta">
-              <span class="cat">Restaurant</span>
-              <h3>Goldkorn Bäckerei</h3>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-cat="startup">
-            <div class="project-thumb" aria-hidden="true">
-              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="#0A1626"/><rect x="24" y="26" width="90" height="12" rx="4" fill="#D9A441" opacity="0.85"/><rect x="24" y="58" width="272" height="52" rx="10" fill="#0C2340"/><rect x="40" y="76" width="130" height="8" rx="3" fill="#F7F5F0" opacity="0.85"/><rect x="40" y="90" width="90" height="6" rx="2" fill="#44607D"/><rect x="24" y="122" width="130" height="52" rx="10" fill="#0C2340"/><rect x="166" y="122" width="130" height="52" rx="10" fill="#0C2340"/><rect x="40" y="140" width="70" height="7" rx="3" fill="#D9A441" opacity="0.6"/><rect x="182" y="140" width="70" height="7" rx="3" fill="#D9A441" opacity="0.6"/></svg>
-            </div>
-            <div class="project-meta">
-              <span class="cat">Start-up</span>
-              <h3>Atelier Nord</h3>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-cat="shop">
-            <div class="project-thumb" aria-hidden="true">
-              <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="#0A1626"/><rect x="24" y="24" width="168" height="152" rx="10" fill="#0C2340"/><circle cx="108" cy="86" r="26" fill="none" stroke="#D9A441" stroke-width="2" opacity="0.75"/><rect x="66" y="130" width="84" height="8" rx="3" fill="#F7F5F0" opacity="0.8"/><rect x="80" y="146" width="56" height="6" rx="2" fill="#44607D"/><rect x="208" y="24" width="88" height="70" rx="10" fill="#0C2340"/><rect x="208" y="106" width="88" height="70" rx="10" fill="#0C2340"/><rect x="222" y="44" width="60" height="7" rx="3" fill="#D9A441" opacity="0.6"/><rect x="222" y="126" width="60" height="7" rx="3" fill="#D9A441" opacity="0.6"/></svg>
-            </div>
-            <div class="project-meta">
-              <span class="cat">Shop</span>
-              <h3>Blooma Concept Store</h3>
             </div>
           </article>
         </div>
@@ -289,13 +299,13 @@
         <div class="section-head reveal">
           <p class="kicker" data-en="Pricing">Preise</p>
           <h2 data-en="Transparent packages, no surprises">Transparente Pakete, keine Überraschungen</h2>
-          <p data-en="Every project is unique — these packages are the starting point.">Jedes Projekt ist einzigartig — diese Pakete sind der Ausgangspunkt.</p>
+          <p data-en="Every project is unique — so every quote is tailored to you.">Jedes Projekt ist einzigartig — deshalb kalkulieren wir jeden Preis individuell für Sie.</p>
         </div>
 
         <div class="pricing-grid">
           <article class="price-card reveal">
             <h3>Basic</h3>
-            <p class="price-tag">€ 1.490</p>
+            <p class="price-tag on-request" data-en="Price on request">Preis auf Anfrage</p>
             <p class="price-note" data-en="One-page website">Onepager-Website</p>
             <ul class="price-features">
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Custom design (no templates)">Individuelles Design (keine Templates)</span></li>
@@ -308,7 +318,7 @@
           <article class="price-card featured reveal">
             <span class="price-badge" data-en="Most popular">Am beliebtesten</span>
             <h3>Pro</h3>
-            <p class="price-tag">€ 3.490</p>
+            <p class="price-tag on-request" data-en="Price on request">Preis auf Anfrage</p>
             <p class="price-note" data-en="Multi-page website">Mehrseitige Website</p>
             <ul class="price-features">
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Everything in Basic">Alles aus Basic</span></li>
@@ -321,7 +331,7 @@
 
           <article class="price-card reveal">
             <h3>Premium</h3>
-            <p class="price-tag">€ 6.900</p>
+            <p class="price-tag on-request" data-en="Price on request">Preis auf Anfrage</p>
             <p class="price-note" data-en="Website + branding">Website + Branding</p>
             <ul class="price-features">
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Everything in Pro">Alles aus Pro</span></li>
@@ -383,7 +393,7 @@
     <!-- ================= Kontakt ================= -->
     <section class="section contact-section" id="kontakt">
       <div class="container contact-wrap">
-        <div class="contact-info reveal">
+        <div class="contact-info reveal reveal-left">
           <p class="kicker" data-en="Contact">Kontakt</p>
           <h2 data-en="Let's bring your project to light.">Bringen wir Ihr Projekt ans Licht.</h2>
           <p data-en="Tell us about your idea — we usually reply within 24 hours.">Erzählen Sie uns von Ihrer Idee — wir melden uns in der Regel innerhalb von 24 Stunden.</p>
@@ -403,7 +413,7 @@
           </div>
         </div>
 
-        <form class="contact-form reveal" id="kontakt-form" action="https://formspree.io/f/xqerkzqe" method="POST" novalidate>
+        <form class="contact-form reveal reveal-right" id="kontakt-form" action="https://formspree.io/f/xqerkzqe" method="POST" novalidate>
           <div class="form-field">
             <label for="cf-name">Name</label>
             <input type="text" id="cf-name" name="name" autocomplete="name" required data-en-placeholder="Your name" placeholder="Ihr Name">

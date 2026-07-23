@@ -58,13 +58,51 @@
     }
   } catch (e) { /* noop */ }
 
-  /* ---------- Header-Zustand ---------- */
+  /* ---------- Scroll-Handler (Header, Progress, Parallax) ---------- */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var header = document.getElementById("site-header");
-  function onScroll() {
-    if (header) header.classList.toggle("scrolled", window.scrollY > 8);
+  var progress = document.getElementById("scroll-progress");
+  var hero = document.querySelector(".hero");
+  var heroHeight = hero ? hero.offsetHeight : 0;
+  var ticking = false;
+
+  window.addEventListener("resize", function () {
+    if (hero) heroHeight = hero.offsetHeight;
+  }, { passive: true });
+
+  function updateScroll() {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+
+    if (header) header.classList.toggle("scrolled", y > 8);
+
+    if (progress && !reduceMotion) {
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var ratio = docHeight > 0 ? Math.min(y / docHeight, 1) : 0;
+      progress.style.transform = "scaleX(" + ratio + ")";
+    }
+
+    if (hero && !reduceMotion) {
+      // Lichtstrahl folgt der Scroll-Richtung: Position = Fortschritt durch die Hero
+      var beamPos = heroHeight > 0 ? Math.min(Math.max(y / heroHeight, 0), 1) : 0;
+      hero.style.setProperty("--beam-pos", beamPos.toFixed(3));
+
+      // Sanfter Parallax nur auf dem dekorativen Hero-Glow, solange sichtbar
+      if (y < window.innerHeight) {
+        hero.style.setProperty("--glow-shift", (y * 0.18).toFixed(1) + "px");
+      }
+    }
   }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(updateScroll);
+    }
+  }
+
   window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  updateScroll();
 
   /* ---------- Mobile-Nav ---------- */
   var burger = document.getElementById("nav-burger");
@@ -85,8 +123,18 @@
   }
 
   /* ---------- Scroll-Reveals ---------- */
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var reveals = document.querySelectorAll(".reveal");
+
+  // Stagger: jedem Reveal seinen Index innerhalb der Elterngruppe geben,
+  // damit Karten in einem Grid nacheinander erscheinen (max. 6, damit späte
+  // Elemente nicht zu lange warten).
+  var groupCounts = new WeakMap();
+  reveals.forEach(function (el) {
+    var parent = el.parentElement;
+    var idx = groupCounts.get(parent) || 0;
+    el.style.setProperty("--i", Math.min(idx, 6));
+    groupCounts.set(parent, idx + 1);
+  });
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
     reveals.forEach(function (el) { el.classList.add("visible"); });
