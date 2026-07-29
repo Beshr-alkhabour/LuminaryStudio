@@ -830,9 +830,11 @@ a.project-card {
   margin-bottom: 0.2rem;
 }
 
-.price-tag.on-request {
-  font-size: 1.4rem;
-  color: var(--gold);
+.price-from {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0;
 }
 
 .price-note {
