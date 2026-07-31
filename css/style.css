@@ -423,10 +423,14 @@ h4 {
   height: 30%;
   transform: translate(-50%, calc(-50% + (var(--beam-pos, 0) * 383%)));
   background: linear-gradient(180deg, transparent, var(--gold-bright) 50%, transparent);
-  filter: blur(2px);
   border-radius: 50%;
   will-change: transform;
   transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Beam-Blur erst nach dem LCP-Paint (filter:blur ist teuer) */
+body.loaded .hero-beam::after {
+  filter: blur(2px);
 }
 
 .hero-inner {
@@ -611,6 +615,111 @@ h4 {
 .process-step p {
   font-size: 0.94rem;
   color: var(--text-muted);
+}
+
+/* ---------- Über uns ---------- */
+.about-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -8%;
+  width: 46%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(217, 164, 65, 0.07), transparent 70%);
+  pointer-events: none;
+}
+
+.about-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.about-photo {
+  position: relative;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(217, 164, 65, 0.08);
+  aspect-ratio: 4 / 5;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), transparent 75%);
+  pointer-events: none;
+}
+
+.about-text h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  margin: 0.6rem 0 1.2rem;
+}
+
+.about-text > p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.9rem;
+}
+
+.about-founder {
+  border-left: 2px solid var(--border-gold);
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  margin: 0 0 2rem;
+}
+
+.about-founder blockquote {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.about-founder figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.about-sign-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.about-sign-role {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 760px) {
+  .about-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    max-width: 320px;
+  }
 }
 
 /* ---------- Projekte ---------- */
@@ -1257,10 +1366,15 @@ a.project-card {
   }
 }
 
-/* Parallax + breathing glow on the hero light source */
+/* Parallax + breathing glow on the hero light source.
+   Die Atmung startet erst nach dem LCP-Paint (body.loaded), damit sie
+   den ersten Paint der Headline nicht ausbremst. */
 .hero::before {
   transform: translateY(var(--glow-shift, 0px));
   will-change: transform, opacity;
+}
+
+body.loaded .hero::before {
   animation: glowBreath 6.5s ease-in-out infinite alternate;
 }
 
@@ -1293,6 +1407,13 @@ a.project-card {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
+  /* backdrop-filter ist auf Mobile zu teuer (LCP/Main-Thread) — solider Hintergrund */
+  .site-header {
+    background: rgba(6, 13, 24, 0.92);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .main-nav {
     position: fixed;
     top: 64px;
@@ -1301,9 +1422,7 @@ a.project-card {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background: rgba(6, 13, 24, 0.97);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: rgba(6, 13, 24, 0.98);
     border-bottom: 1px solid var(--border);
     padding: 0.8rem 1.5rem 1.4rem;
     transform: translateY(-8px);

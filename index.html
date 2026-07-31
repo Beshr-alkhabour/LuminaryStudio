@@ -14,6 +14,9 @@
   <meta property="og:description" content="Webdesign, Entwicklung und Branding für Restaurants, Shops und Start-ups.">
   <meta property="og:url" content="https://luminary.studio/">
   <meta property="og:image" content="https://luminary.studio/assets/logo/og.png">
+  <!-- LCP: kritische Fonts parallel zu style.css laden (sonst erst nach CSS-Parse entdeckt) -->
+  <link rel="preload" href="assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script type="application/ld+json">
@@ -56,6 +59,7 @@
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
         <a href="#leistungen" data-en="Services">Leistungen</a>
         <a href="#prozess" data-en="Process">Prozess</a>
+        <a href="#ueber-uns" data-en="About">Über uns</a>
         <a href="#projekte" data-en="Work">Projekte</a>
         <a href="#preise" data-en="Pricing">Preise</a>
         <a href="#faq">FAQ</a>
@@ -176,6 +180,35 @@
       </div>
     </section>
 
+    <!-- ================= Über uns ================= -->
+    <section class="section about-section" id="ueber-uns">
+      <div class="container about-wrap">
+        <div class="about-photo reveal reveal-left">
+          <picture>
+            <source srcset="assets/founder-duotone.avif" type="image/avif">
+            <source srcset="assets/founder-duotone.webp" type="image/webp">
+            <img src="assets/founder-duotone.webp" alt="Beshr Alkhabour, Gründer von Luminary Studio" width="736" height="920" loading="lazy" draggable="false">
+          </picture>
+        </div>
+
+        <div class="about-text reveal reveal-right">
+          <p class="kicker" data-en="About">Über uns</p>
+          <h2 data-en="A studio with a face — and a real point of contact.">Ein Studio mit Gesicht — und einem echten Ansprechpartner.</h2>
+          <p data-en="Luminary Studio is a web design studio from Vienna. We build websites that don't just look good but actually work for local businesses — clear, fast, and with an eye for detail. No page builders, no templates: every site is crafted individually, from the first sketch to launch.">Luminary Studio ist ein Webdesign-Studio aus Wien. Wir gestalten Websites, die nicht nur gut aussehen, sondern für lokale Unternehmen arbeiten — klar, schnell und mit einem Blick fürs Detail. Kein Baukasten, keine Vorlagen: Jede Seite entsteht individuell, von der ersten Skizze bis zum Launch.</p>
+
+          <figure class="about-founder">
+            <blockquote data-en="&ldquo;I build websites because I'm fascinated by how much a strong online presence moves small businesses forward. With me there's no hold queue and no ticket system — you talk directly to the person who designs and builds your site.&rdquo;">„Ich baue Websites, weil mich fasziniert, wie sehr ein starker Auftritt kleine Unternehmen nach vorne bringt. Bei mir gibt es keine Warteschleife und kein Ticketsystem — Sie sprechen direkt mit der Person, die Ihre Seite gestaltet und umsetzt.&ldquo;</blockquote>
+            <figcaption>
+              <span class="about-sign-name">Beshr Alkhabour</span>
+              <span class="about-sign-role" data-en="Founder">Gründer</span>
+            </figcaption>
+          </figure>
+
+          <a href="#kontakt" class="btn btn-gold" data-en="Let's get to know each other">Lernen wir uns kennen</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= Projekte ================= -->
     <section class="section" id="projekte">
       <div class="container">
@@ -195,7 +228,11 @@
           <!-- Echte Kundenreferenzen (klickbar, öffnen in neuem Tab) -->
           <a class="project-card reveal" data-cat="kunde" href="https://kleintierkardiologie.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Kleintierkardiologie Wien — Projekt in neuem Tab öffnen">
             <div class="project-thumb">
-              <img src="assets/projects/kleintier.jpg" alt="Website der Kleintierkardiologie Wien (Dr. Kosztolich) — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+              <picture>
+                <source srcset="assets/projects/kleintier.avif" type="image/avif">
+                <source srcset="assets/projects/kleintier.webp" type="image/webp">
+                <img src="assets/projects/kleintier.webp" alt="Website der Kleintierkardiologie Wien (Dr. Kosztolich) — gestaltet von Luminary Studio" width="736" height="460" loading="lazy" draggable="false">
+              </picture>
             </div>
             <div class="project-meta">
               <span class="cat">Website</span>
@@ -207,7 +244,11 @@
 
           <a class="project-card reveal" data-cat="kunde" href="https://grand.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="Fahrschule Grand — Projekt in neuem Tab öffnen">
             <div class="project-thumb">
-              <img src="assets/projects/grand.jpg" alt="Website der Fahrschule Grand — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+              <picture>
+                <source srcset="assets/projects/grand.avif" type="image/avif">
+                <source srcset="assets/projects/grand.webp" type="image/webp">
+                <img src="assets/projects/grand.webp" alt="Website der Fahrschule Grand — gestaltet von Luminary Studio" width="736" height="460" loading="lazy" draggable="false">
+              </picture>
             </div>
             <div class="project-meta">
               <span class="cat">Website</span>
@@ -219,7 +260,11 @@
 
           <a class="project-card reveal" data-cat="kunde" href="https://blumen-larose.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="Blumen La Rose — Projekt in neuem Tab öffnen">
             <div class="project-thumb">
-              <img src="assets/projects/blumen.jpg" alt="Website von Blumen La Rose — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+              <picture>
+                <source srcset="assets/projects/blumen.avif" type="image/avif">
+                <source srcset="assets/projects/blumen.webp" type="image/webp">
+                <img src="assets/projects/blumen.webp" alt="Website von Blumen La Rose — gestaltet von Luminary Studio" width="736" height="460" loading="lazy" draggable="false">
+              </picture>
             </div>
             <div class="project-meta">
               <span class="cat">Website</span>
@@ -231,7 +276,11 @@
 
           <a class="project-card reveal" data-cat="kunde" href="https://msh-photovoltaik.onepage.me/" target="_blank" rel="noopener noreferrer" aria-label="MSH Photovoltaik — Projekt in neuem Tab öffnen">
             <div class="project-thumb">
-              <img src="assets/projects/msh.jpg" alt="Landing Page von MSH Photovoltaik — gestaltet von Luminary Studio" width="1200" height="850" loading="lazy" draggable="false">
+              <picture>
+                <source srcset="assets/projects/msh.avif" type="image/avif">
+                <source srcset="assets/projects/msh.webp" type="image/webp">
+                <img src="assets/projects/msh.webp" alt="Landing Page von MSH Photovoltaik — gestaltet von Luminary Studio" width="736" height="460" loading="lazy" draggable="false">
+              </picture>
             </div>
             <div class="project-meta">
               <span class="cat" data-en="Landing Page">Landing Page</span>
@@ -475,6 +524,7 @@
           <ul>
             <li><a href="#leistungen" data-en="Services">Leistungen</a></li>
             <li><a href="#prozess" data-en="Process">Prozess</a></li>
+            <li><a href="#ueber-uns" data-en="About">Über uns</a></li>
             <li><a href="#projekte" data-en="Work">Projekte</a></li>
             <li><a href="#preise" data-en="Pricing">Preise</a></li>
           </ul>

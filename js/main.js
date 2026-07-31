@@ -3,6 +3,15 @@
 (function () {
   "use strict";
 
+  /* Teure Hero-Deko-Effekte (Glow-Atmung, Beam-Blur) erst nach dem ersten
+     Paint zuschalten — hält den LCP-Pfad frei. Fallback ohne 'load'-Event. */
+  function markLoaded() { document.body.classList.add("loaded"); }
+  if (document.readyState === "complete") {
+    markLoaded();
+  } else {
+    window.addEventListener("load", markLoaded, { once: true });
+  }
+
   var LANG_KEY = "luminary-lang";
 
   /* ---------- Sprach-Toggle ---------- */
