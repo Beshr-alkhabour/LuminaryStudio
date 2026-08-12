@@ -3,4 +3,4 @@ Allow: /
 Disallow: /impressum.html
 Disallow: /datenschutz.html
 
-Sitemap: https://luminary.studio/sitemap.xml
+Sitemap: https://www.luminary-studio.at/sitemap.xml
