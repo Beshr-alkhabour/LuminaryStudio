@@ -220,12 +220,28 @@
 
         <div class="filter-bar reveal" role="group" aria-label="Projekte filtern">
           <button class="filter-btn" data-filter="all" aria-pressed="true" data-en="All">Alle</button>
-          <button class="filter-btn" data-filter="kunde" aria-pressed="false" data-en="Client work">Kundenprojekte</button>
+          <button class="filter-btn" data-filter="kunde" aria-pressed="false" data-en="References">Referenzen</button>
           <button class="filter-btn" data-filter="konzept" aria-pressed="false" data-en="Concepts">Konzepte</button>
         </div>
 
         <div class="projects-grid">
           <!-- Echte Kundenreferenzen (klickbar, öffnen in neuem Tab) -->
+          <a class="project-card reveal" data-cat="kunde" href="https://fluxa-topaz.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Fluxa — Projekt in neuem Tab öffnen">
+            <div class="project-thumb">
+              <picture>
+                <source srcset="assets/projects/fluxa.avif" type="image/avif">
+                <source srcset="assets/projects/fluxa.webp" type="image/webp">
+                <img src="assets/projects/fluxa.webp" alt="Fluxa — Budget-Web-App (Case Study), gestaltet von Luminary Studio" width="736" height="460" loading="lazy" draggable="false">
+              </picture>
+            </div>
+            <div class="project-meta">
+              <span class="cat">Web-App</span>
+              <h3>Fluxa
+                <svg class="project-ext" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </h3>
+            </div>
+          </a>
+
           <a class="project-card reveal" data-cat="kunde" href="https://kleintierkardiologie.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Kleintierkardiologie Wien — Projekt in neuem Tab öffnen">
             <div class="project-thumb">
               <picture>
