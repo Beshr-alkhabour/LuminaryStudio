@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluxa — Budget-Web-App (Case Study) | Luminary Studio</title>
+  <meta name="description" content="Case Study: Fluxa — eine Progressive Web App, die dein erwartetes Monatseinkommen im Voraus auf alle Kategorien aufteilt. Design & Entwicklung von Luminary Studio, Wien.">
+  <meta name="theme-color" content="#060D18">
+  <link rel="canonical" href="https://www.luminary-studio.at/projekte/fluxa.html">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fluxa — Budget-Web-App (Case Study)">
+  <meta property="og:description" content="Eine PWA, die zeigt, was du ausgeben kannst — nicht nur, was du ausgegeben hast. Design & Engineering von Luminary Studio.">
+  <meta property="og:url" content="https://www.luminary-studio.at/projekte/fluxa.html">
+  <meta property="og:image" content="https://www.luminary-studio.at/assets/projects/fluxa.webp">
+  <link rel="preload" href="/assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.luminary-studio.at/" },
+      { "@type": "ListItem", "position": 2, "name": "Projekte", "item": "https://www.luminary-studio.at/projekte.html" },
+      { "@type": "ListItem", "position": 3, "name": "Fluxa", "item": "https://www.luminary-studio.at/projekte/fluxa.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Luminary Studio — Startseite">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#D9A441" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 1 L14.6 9.4 L23 12 L14.6 14.6 L12 23 L9.4 14.6 L1 12 L9.4 9.4 Z"/>
+        </svg>
+        <span class="wordmark"><span>Luminary</span><span class="line2">Studio</span></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+        <a href="/index.html#leistungen" data-en="Services">Leistungen</a>
+        <a href="/index.html#prozess" data-en="Process">Prozess</a>
+        <a href="/index.html#ueber-uns" data-en="About">Über uns</a>
+        <a href="/projekte.html" data-en="Work">Projekte</a>
+        <a href="/index.html#preise" data-en="Pricing">Preise</a>
+        <a href="/index.html#kontakt" data-en="Contact">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <a href="/index.html#kontakt" class="btn btn-gold header-cta" data-en="Start a project">Projekt starten</a>
+        <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="subpage">
+    <div class="container">
+      <nav class="breadcrumb reveal" aria-label="Brotkrümel">
+        <a href="/" data-en="Home">Startseite</a><span aria-hidden="true">/</span>
+        <a href="/projekte.html" data-en="Work">Projekte</a><span aria-hidden="true">/</span>
+        <span aria-current="page">Fluxa</span>
+      </nav>
+
+      <div class="subpage-head reveal">
+        <p class="kicker">Case Study · Web-App</p>
+        <h1 data-en="Fluxa — a budgeting app that thinks ahead">Fluxa — eine Budget-App, die vorausdenkt</h1>
+        <p class="lead" data-en="Most money apps tell you what you spent. Fluxa tells you what you can spend — it divides your expected monthly income across every category before the month even begins.">Die meisten Budget-Apps zeigen dir, was du ausgegeben hast. Fluxa zeigt dir, was du ausgeben <em>kannst</em> — es verteilt dein erwartetes Monatseinkommen auf jede Kategorie, noch bevor der Monat begonnen hat.</p>
+
+        <dl class="case-meta">
+          <div>
+            <dt data-en="Role">Rolle</dt>
+            <dd data-en="Product design &amp; engineering">Produktdesign &amp; Entwicklung</dd>
+          </div>
+          <div>
+            <dt data-en="Type">Typ</dt>
+            <dd>Progressive Web App</dd>
+          </div>
+          <div>
+            <dt data-en="Year">Jahr</dt>
+            <dd>2026</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="case-figure reveal">
+        <picture>
+          <source srcset="/assets/projects/fluxa.avif" type="image/avif">
+          <source srcset="/assets/projects/fluxa.webp" type="image/webp">
+          <img src="/assets/projects/fluxa.webp" alt="Startbildschirm der Fluxa-App mit erwartetem Einkommen und der Aufteilung auf Kategorien" width="736" height="460" loading="lazy">
+        </picture>
+      </figure>
+
+      <div class="case-body">
+        <h2 class="reveal" data-en="The challenge">Die Herausforderung</h2>
+        <p class="reveal" data-en="Every budgeting app is good at adding up the past. The harder question is the one you face on the first of the month: given what is coming in, what is each part of your life actually allowed to cost? Existing apps answer that too late — after the money is already spent.">Jede Budget-App ist gut darin, die Vergangenheit zusammenzuzählen. Die schwierigere Frage stellt sich am Monatsersten: Was darf jeder Bereich deines Lebens angesichts des erwarteten Einkommens eigentlich kosten? Bestehende Apps beantworten das zu spät — wenn das Geld längst ausgegeben ist.</p>
+
+        <h2 class="reveal" data-en="The solution">Die Lösung</h2>
+        <p class="reveal" data-en="You enter what you expect to earn this month. Before the month starts, Fluxa divides that income across every category you keep — fixed commitments protected, the things you said matter least trimmed first. The allocation always balances to the last euro.">Du gibst ein, was du diesen Monat erwartest zu verdienen. Noch bevor der Monat beginnt, teilt Fluxa dieses Einkommen auf alle Kategorien auf — Fixkosten geschützt, das mit der niedrigsten Priorität zuerst gekürzt. Die Aufteilung geht immer bis auf den letzten Euro auf.</p>
+
+        <h2 class="reveal" data-en="How it works: the wave engine">Wie es funktioniert: das Wellen-Prinzip</h2>
+        <p class="reveal" data-en="Income is funded in waves. Each wave is filled before the next one sees a cent, and within a wave the floors are covered first. A category is only ever cut after everything below it has already been cut to the bone — so rent and insurance never move while lifestyle absorbs a shortfall.">Das Einkommen wird in Wellen verteilt. Jede Welle wird vollständig gefüllt, bevor die nächste einen Cent sieht — und innerhalb einer Welle zuerst die Mindestbeträge. Eine Kategorie wird erst gekürzt, wenn alles darunter schon bis aufs Minimum gekürzt ist. So bleiben Miete und Versicherung unangetastet, während der Lifestyle einen Engpass abfedert.</p>
+
+        <h2 class="reveal" data-en="Built as a real product">Als echtes Produkt gebaut</h2>
+        <p class="reveal" data-en="Fluxa is a Progressive Web App — it installs on iOS and Android, works fully offline, needs no account, and keeps all data on the device. Design and engineering came from one hand, from the allocation algorithm to the last pixel.">Fluxa ist eine Progressive Web App — sie installiert sich auf iOS und Android, funktioniert komplett offline, braucht kein Konto und hält alle Daten auf dem Gerät. Design und Entwicklung kamen aus einer Hand, vom Aufteilungs-Algorithmus bis zum letzten Pixel.</p>
+        <ul class="case-highlights reveal">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Installs on iOS &amp; Android, works offline">Installierbar auf iOS &amp; Android, offline nutzbar</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="No account, data stays on the device (privacy by design)">Kein Konto, Daten bleiben auf dem Gerät (Privacy by Design)</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Allocation balances to the last euro, every time">Aufteilung geht jedes Mal bis auf den letzten Euro auf</span></li>
+        </ul>
+
+        <div class="case-cta reveal">
+          <a href="https://fluxa-topaz.vercel.app/" class="btn btn-gold" target="_blank" rel="noopener noreferrer" data-en="View the live app">Live-App ansehen</a>
+          <a href="/index.html#kontakt" class="btn btn-ghost" data-en="Request a similar project">Ähnliches Projekt anfragen</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span data-en="© 2026 Luminary Studio. All rights reserved.">© 2026 Luminary Studio. Alle Rechte vorbehalten.</span>
+        <span><a href="/projekte.html" data-en="All projects">Alle Projekte</a> · <a href="/">Startseite</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
