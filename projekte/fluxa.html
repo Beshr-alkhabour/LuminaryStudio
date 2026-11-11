@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fluxa — Budget-Web-App (Case Study) | Luminary Studio</title>
-  <meta name="description" content="Case Study: Fluxa — eine Progressive Web App, die dein erwartetes Monatseinkommen im Voraus auf alle Kategorien aufteilt. Design & Entwicklung von Luminary Studio, Wien.">
+  <meta name="description" content="Case Study: Fluxa ist eine Budget-App von Luminary Studio, die das erwartete Monatseinkommen schon vor Monatsbeginn auf alle Kategorien aufteilt. Offline nutzbar, ohne Konto.">
   <meta name="theme-color" content="#060D18">
   <link rel="canonical" href="https://www.luminary-studio.at/projekte/fluxa.html">
   <link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Fluxa — Budget-Web-App (Case Study)">
-  <meta property="og:description" content="Eine PWA, die zeigt, was du ausgeben kannst — nicht nur, was du ausgegeben hast. Design & Engineering von Luminary Studio.">
+  <meta property="og:description" content="Eine Budget-App, die vor Monatsbeginn zeigt, wie viel für jede Kategorie bleibt. Konzept, Design und Entwicklung von Luminary Studio.">
   <meta property="og:url" content="https://www.luminary-studio.at/projekte/fluxa.html">
   <meta property="og:image" content="https://www.luminary-studio.at/assets/projects/fluxa.webp">
   <link rel="preload" href="/assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -71,9 +71,9 @@
       </nav>
 
       <div class="subpage-head reveal">
-        <p class="kicker">Case Study · Web-App</p>
+        <p class="kicker" data-en="Own product · Web app">Eigenes Produkt · Web-App</p>
         <h1 data-en="Fluxa — a budgeting app that thinks ahead">Fluxa — eine Budget-App, die vorausdenkt</h1>
-        <p class="lead" data-en="Most money apps tell you what you spent. Fluxa tells you what you can spend — it divides your expected monthly income across every category before the month even begins.">Die meisten Budget-Apps zeigen dir, was du ausgegeben hast. Fluxa zeigt dir, was du ausgeben <em>kannst</em> — es verteilt dein erwartetes Monatseinkommen auf jede Kategorie, noch bevor der Monat begonnen hat.</p>
+        <p class="lead" data-en="Many budgeting apps show what you have already spent. Fluxa shows what you &lt;em&gt;can&lt;/em&gt; spend: it divides your expected monthly income across every category before the month begins. Fluxa is Luminary Studio's own product.">Viele Budget-Apps zeigen, was man bereits ausgegeben hat. Fluxa zeigt, was man ausgeben <em>kann</em>: Die App verteilt das erwartete Monatseinkommen auf alle Kategorien, bevor der Monat beginnt. Fluxa ist ein eigenes Produkt von Luminary Studio.</p>
 
         <dl class="case-meta">
           <div>
@@ -101,16 +101,16 @@
 
       <div class="case-body">
         <h2 class="reveal" data-en="The challenge">Die Herausforderung</h2>
-        <p class="reveal" data-en="Every budgeting app is good at adding up the past. The harder question is the one you face on the first of the month: given what is coming in, what is each part of your life actually allowed to cost? Existing apps answer that too late — after the money is already spent.">Jede Budget-App ist gut darin, die Vergangenheit zusammenzuzählen. Die schwierigere Frage stellt sich am Monatsersten: Was darf jeder Bereich deines Lebens angesichts des erwarteten Einkommens eigentlich kosten? Bestehende Apps beantworten das zu spät — wenn das Geld längst ausgegeben ist.</p>
+        <p class="reveal" data-en="Adding up expenses after the fact is easy. The harder question comes on the first of the month: how much may each area cost, based on the income you expect? If you only look at the end of the month, the answer comes too late.">Ausgaben im Nachhinein zusammenzuzählen ist einfach. Schwieriger ist die Frage am Monatsersten: Wie viel darf jeder Bereich kosten, wenn man vom erwarteten Einkommen ausgeht? Wer erst am Monatsende nachsieht, bekommt die Antwort zu spät.</p>
 
         <h2 class="reveal" data-en="The solution">Die Lösung</h2>
-        <p class="reveal" data-en="You enter what you expect to earn this month. Before the month starts, Fluxa divides that income across every category you keep — fixed commitments protected, the things you said matter least trimmed first. The allocation always balances to the last euro.">Du gibst ein, was du diesen Monat erwartest zu verdienen. Noch bevor der Monat beginnt, teilt Fluxa dieses Einkommen auf alle Kategorien auf — Fixkosten geschützt, das mit der niedrigsten Priorität zuerst gekürzt. Die Aufteilung geht immer bis auf den letzten Euro auf.</p>
+        <p class="reveal" data-en="You enter what you expect to earn this month. Before the month starts, Fluxa divides that income across every category you keep — fixed commitments protected, the things you said matter least trimmed first. The allocation always balances to the last euro.">Nutzer geben ein, welches Einkommen sie im Monat erwarten. Noch bevor der Monat beginnt, teilt Fluxa diesen Betrag auf alle Kategorien auf. Fixkosten sind geschützt, Kategorien mit niedriger Priorität werden zuerst gekürzt. Die Aufteilung geht immer bis auf den letzten Euro auf.</p>
 
         <h2 class="reveal" data-en="How it works: the wave engine">Wie es funktioniert: das Wellen-Prinzip</h2>
         <p class="reveal" data-en="Income is funded in waves. Each wave is filled before the next one sees a cent, and within a wave the floors are covered first. A category is only ever cut after everything below it has already been cut to the bone — so rent and insurance never move while lifestyle absorbs a shortfall.">Das Einkommen wird in Wellen verteilt. Jede Welle wird vollständig gefüllt, bevor die nächste einen Cent sieht — und innerhalb einer Welle zuerst die Mindestbeträge. Eine Kategorie wird erst gekürzt, wenn alles darunter schon bis aufs Minimum gekürzt ist. So bleiben Miete und Versicherung unangetastet, während der Lifestyle einen Engpass abfedert.</p>
 
         <h2 class="reveal" data-en="Built as a real product">Als echtes Produkt gebaut</h2>
-        <p class="reveal" data-en="Fluxa is a Progressive Web App — it installs on iOS and Android, works fully offline, needs no account, and keeps all data on the device. Design and engineering came from one hand, from the allocation algorithm to the last pixel.">Fluxa ist eine Progressive Web App — sie installiert sich auf iOS und Android, funktioniert komplett offline, braucht kein Konto und hält alle Daten auf dem Gerät. Design und Entwicklung kamen aus einer Hand, vom Aufteilungs-Algorithmus bis zum letzten Pixel.</p>
+        <p class="reveal" data-en="Fluxa is a Progressive Web App. It installs on iOS and Android, works offline, needs no account and stores all data on the device only. Concept, design and development, including the allocation algorithm, were done by Luminary Studio.">Fluxa ist eine Progressive Web App. Sie lässt sich auf iOS und Android installieren, funktioniert offline, braucht kein Konto und speichert alle Daten nur auf dem Gerät. Konzept, Design und Programmierung, einschließlich des Aufteilungs-Algorithmus, stammen von Luminary Studio.</p>
         <ul class="case-highlights reveal">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Installs on iOS &amp; Android, works offline">Installierbar auf iOS &amp; Android, offline nutzbar</span></li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-en="No account, data stays on the device (privacy by design)">Kein Konto, Daten bleiben auf dem Gerät (Privacy by Design)</span></li>
