@@ -509,7 +509,7 @@
         <div class="contact-info reveal reveal-left">
           <p class="kicker" data-en="Contact">Kontakt</p>
           <h2 data-en="Let's bring your project to light.">Bringen wir Ihr Projekt ans Licht.</h2>
-          <p data-en="Tell us briefly about your project. We usually reply within 24 hours.">Erzählen Sie uns kurz von Ihrem Vorhaben. Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
+          <p data-en="Five short questions, most of them answered with one click. We usually reply within 24 hours.">Fünf kurze Fragen, die meisten mit einem Klick beantwortet. Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
           <div class="contact-lines">
             <a href="mailto:info@luminary-studio.at">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
@@ -526,29 +526,129 @@
           </div>
         </div>
 
-        <form class="contact-form reveal reveal-right" id="kontakt-form" action="https://formspree.io/f/xqerkzqe" method="POST" novalidate>
-          <div class="form-field">
-            <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" name="name" autocomplete="name" required data-en-placeholder="Your name" placeholder="Ihr Name">
+        <form class="contact-form funnel reveal reveal-right" id="kontakt-form" action="https://formspree.io/f/xqerkzqe" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Neue Anfrage über luminary-studio.at">
+          <div class="funnel-progress" aria-hidden="true"><span class="funnel-bar"></span></div>
+          <p class="funnel-count" aria-live="polite"></p>
+
+          <fieldset class="funnel-step" data-step="1">
+            <legend class="funnel-title" tabindex="-1" data-en="What can we build for you?">Was dürfen wir für Sie umsetzen?</legend>
+            <div class="choice-grid choice-grid--icons">
+              <label class="choice"><input type="radio" name="projekt" value="Neue Website" required><span class="choice-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M12 12v5M9.5 14.5h5"/></svg><span data-en="New website">Neue Website</span></span></label>
+              <label class="choice"><input type="radio" name="projekt" value="Relaunch einer bestehenden Website"><span class="choice-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg><span data-en="Relaunch">Relaunch</span></span></label>
+              <label class="choice"><input type="radio" name="projekt" value="Website + Branding"><span class="choice-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17 2 7 12l-4 9 9-4L22 7z"/></svg><span data-en="Website + branding">Website + Branding</span></span></label>
+              <label class="choice"><input type="radio" name="projekt" value="Onlineshop oder Buchungssystem"><span class="choice-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg><span data-en="Shop or booking">Shop oder Buchung</span></span></label>
+              <label class="choice"><input type="radio" name="projekt" value="Kostenloser Website-Check"><span class="choice-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M8 11l2 2 4-4"/></svg><span data-en="Free website check">Kostenloser Website-Check</span></span></label>
+              <label class="choice"><input type="radio" name="projekt" value="Etwas anderes"><span class="choice-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg><span data-en="Something else">Etwas anderes</span></span></label>
+            </div>
+            <div class="funnel-nav">
+              <button type="button" class="btn btn-ghost funnel-next" data-funnel="next" data-en="Next">Weiter</button>
+        </div>
+          </fieldset>
+
+          <fieldset class="funnel-step" data-step="2">
+            <legend class="funnel-title" tabindex="-1" data-en="What industry are you in?">In welcher Branche sind Sie tätig?</legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="branche" value="Gastronomie" required><span class="choice-box"><span data-en="Hospitality">Gastronomie</span></span></label>
+              <label class="choice"><input type="radio" name="branche" value="Handel / Shop"><span class="choice-box"><span data-en="Retail / shop">Handel / Shop</span></span></label>
+              <label class="choice"><input type="radio" name="branche" value="Praxis / Gesundheit"><span class="choice-box"><span data-en="Practice / health">Praxis / Gesundheit</span></span></label>
+              <label class="choice"><input type="radio" name="branche" value="Handwerk"><span class="choice-box"><span data-en="Trades">Handwerk</span></span></label>
+              <label class="choice"><input type="radio" name="branche" value="Dienstleistung"><span class="choice-box"><span data-en="Services">Dienstleistung</span></span></label>
+              <label class="choice"><input type="radio" name="branche" value="Start-up"><span class="choice-box"><span data-en="Start-up">Start-up</span></span></label>
+              <label class="choice"><input type="radio" name="branche" value="Andere Branche"><span class="choice-box"><span data-en="Other">Andere</span></span></label>
+            </div>
+            <div class="funnel-nav">
+              <button type="button" class="funnel-back" data-funnel="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span data-en="Back">Zurück</span></button>
+              <button type="button" class="btn btn-ghost funnel-next" data-funnel="next" data-en="Next">Weiter</button>
+        </div>
+          </fieldset>
+
+          <fieldset class="funnel-step" data-step="3">
+            <legend class="funnel-title" tabindex="-1" data-en="Do you already have a website?">Haben Sie schon eine Website?</legend>
+            <div class="choice-grid choice-grid--2">
+              <label class="choice"><input type="radio" name="website_vorhanden" value="Ja" required><span class="choice-box"><span data-en="Yes, I have one">Ja, gibt es schon</span></span></label>
+              <label class="choice"><input type="radio" name="website_vorhanden" value="Nein"><span class="choice-box"><span data-en="No, not yet">Nein, noch nicht</span></span></label>
+            </div>
+            <div class="form-field funnel-url" hidden>
+              <label for="cf-url" data-en="Address of your website (optional)">Adresse Ihrer Website (optional)</label>
+              <input type="text" id="cf-url" name="website_url" inputmode="url" autocomplete="url" placeholder="www.ihre-website.at" data-en-placeholder="www.your-website.com">
+            </div>
+            <div class="funnel-nav">
+              <button type="button" class="funnel-back" data-funnel="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span data-en="Back">Zurück</span></button>
+              <button type="button" class="btn btn-ghost funnel-next" data-funnel="next" data-en="Next">Weiter</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="funnel-step" data-step="4">
+            <legend class="funnel-title" tabindex="-1" data-en="Budget and timeframe">Budget und Zeitrahmen</legend>
+            <p class="funnel-hint" data-en="A rough idea is enough. It helps us suggest a fitting package right away.">Eine grobe Einschätzung reicht. So können wir Ihnen gleich ein passendes Angebot vorschlagen.</p>
+            <p class="funnel-sub" data-en="Budget">Budget</p>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="budget" value="bis 1.000 €" required><span class="choice-box"><span data-en="up to €1,000">bis 1.000&nbsp;€</span></span></label>
+              <label class="choice"><input type="radio" name="budget" value="1.000 – 3.000 €"><span class="choice-box"><span data-en="€1,000–3,000">1.000–3.000&nbsp;€</span></span></label>
+              <label class="choice"><input type="radio" name="budget" value="3.000 – 7.000 €"><span class="choice-box"><span data-en="€3,000–7,000">3.000–7.000&nbsp;€</span></span></label>
+              <label class="choice"><input type="radio" name="budget" value="über 7.000 €"><span class="choice-box"><span data-en="over €7,000">über 7.000&nbsp;€</span></span></label>
+              <label class="choice"><input type="radio" name="budget" value="Noch offen"><span class="choice-box"><span data-en="Not sure yet">Weiß ich noch nicht</span></span></label>
+            </div>
+            <p class="funnel-sub" data-en="Timeframe">Zeitrahmen</p>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="zeitrahmen" value="So bald wie möglich" required><span class="choice-box"><span data-en="As soon as possible">So bald wie möglich</span></span></label>
+              <label class="choice"><input type="radio" name="zeitrahmen" value="In 1–3 Monaten"><span class="choice-box"><span data-en="In 1–3 months">In 1–3 Monaten</span></span></label>
+              <label class="choice"><input type="radio" name="zeitrahmen" value="Später / flexibel"><span class="choice-box"><span data-en="Later / flexible">Später / flexibel</span></span></label>
+            </div>
+            <div class="funnel-nav">
+              <button type="button" class="funnel-back" data-funnel="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span data-en="Back">Zurück</span></button>
+              <button type="button" class="btn btn-ghost funnel-next" data-funnel="next" data-en="Next">Weiter</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="funnel-step" data-step="5">
+            <legend class="funnel-title" tabindex="-1" data-en="How can we reach you?">Wie erreichen wir Sie?</legend>
+            <p class="funnel-summary" aria-live="polite"></p>
+            <div class="form-field">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required data-en-placeholder="Your name" placeholder="Ihr Name">
+            </div>
+            <div class="form-field">
+              <label for="cf-email">E-Mail</label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required data-en-placeholder="you@example.com" placeholder="sie@beispiel.at">
+            </div>
+            <div class="form-field">
+              <label for="cf-phone" data-en="Phone (optional)">Telefon (optional)</label>
+              <input type="tel" id="cf-phone" name="telefon" autocomplete="tel" placeholder="+43 …">
+            </div>
+            <div class="form-field">
+              <label for="cf-message" data-en="Anything else? (optional)">Noch etwas, das wir wissen sollten? (optional)</label>
+              <textarea id="cf-message" name="message" rows="3" data-en-placeholder="e.g. a website you like, or your preferred appointment" placeholder="z. B. eine Website, die Ihnen gefällt, oder ein Wunschtermin"></textarea>
+            </div>
+            <div class="hp-field" aria-hidden="true">
+              <label for="cf-gotcha">Bitte leer lassen</label>
+              <input type="text" id="cf-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <label class="form-consent">
+              <input type="checkbox" id="cf-consent" required>
+              <span data-en='I agree that my data will be used to process my request. Details in the <a href="datenschutz.html">privacy policy</a>.'>Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage verwendet werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</span>
+            </label>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <div class="funnel-nav">
+              <button type="button" class="funnel-back" data-funnel="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span data-en="Back">Zurück</span></button>
+              <button type="submit" class="btn btn-gold" data-en="Send request">Anfrage senden</button>
+            </div>
+          </fieldset>
+
+          <div class="funnel-done" hidden tabindex="-1">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
+            <h3 data-en="Thank you, your request has arrived.">Danke, Ihre Anfrage ist angekommen.</h3>
+            <!-- Text je nach Projektart, siehe main.js (data-variant="check" beim Website-Check) -->
+            <p class="done-text done-default" data-en="The quickest next step is a short introductory call: 15 minutes, no obligation. Simply pick a time that suits you.">Am schnellsten geht es mit einem kurzen Erstgespräch weiter: 15 Minuten, unverbindlich. Wählen Sie einfach einen passenden Termin.</p>
+            <p class="done-text done-check" data-en="We will look at your website and usually get back to you with the results within 24 hours. If you would rather talk right away, you can book a short call.">Wir sehen uns Ihre Website an und melden uns in der Regel innerhalb von 24 Stunden mit dem Ergebnis. Wenn Sie lieber gleich sprechen möchten, buchen Sie einen kurzen Termin.</p>
+            <!-- Cal.com wird erst nach Klick in neuem Tab geöffnet, die Seite lädt nichts von Cal.com -->
+            <a class="btn btn-gold funnel-book" href="https://cal.com/beshr-mpnggb/erstgesprach" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span data-en="Book a 15-minute call">15-Minuten-Erstgespräch buchen</span>
+            </a>
+            <p class="funnel-done-note" data-en="Not right now? No problem: we usually reply within 24 hours, or write to info@luminary-studio.at.">Gerade nicht? Kein Problem: Wir melden uns in der Regel innerhalb von 24 Stunden, oder Sie schreiben an info@luminary-studio.at.</p>
           </div>
-          <div class="form-field">
-            <label for="cf-email">E-Mail</label>
-            <input type="email" id="cf-email" name="email" autocomplete="email" required data-en-placeholder="you@example.com" placeholder="sie@beispiel.at">
-          </div>
-          <div class="form-field">
-            <label for="cf-message" data-en="Message">Nachricht</label>
-            <textarea id="cf-message" name="message" required data-en-placeholder="Tell us about your project …" placeholder="Erzählen Sie uns von Ihrem Projekt …"></textarea>
-          </div>
-          <div class="hp-field" aria-hidden="true">
-            <label for="cf-gotcha">Bitte leer lassen</label>
-            <input type="text" id="cf-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-          </div>
-          <label class="form-consent">
-            <input type="checkbox" id="cf-consent" required>
-            <span data-en='I agree that my data will be used to process my request. Details in the <a href="datenschutz.html">privacy policy</a>.'>Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage verwendet werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</span>
-          </label>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          <button type="submit" class="btn btn-gold" data-en="Send message">Nachricht senden</button>
         </form>
       </div>
     </section>

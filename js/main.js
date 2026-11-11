@@ -53,6 +53,9 @@
     } catch (e) {
       /* privater Modus o. Ä. — Toggle funktioniert trotzdem */
     }
+
+    // z. B. Anfrage-Funnel: per JS erzeugte Texte neu setzen
+    document.dispatchEvent(new Event("luminary:lang"));
   }
 
   if (langToggle) {
@@ -193,9 +196,148 @@
     status.innerHTML = currentLang === "en" ? en : de;
   }
 
+  /* ---------- Anfrage-Funnel: Formular Schritt für Schritt ---------- */
+  var funnel = null;
+  if (form && form.classList.contains("funnel")) {
+    funnel = (function () {
+      var steps = [].slice.call(form.querySelectorAll(".funnel-step"));
+      var bar = form.querySelector(".funnel-bar");
+      var count = form.querySelector(".funnel-count");
+      var summary = form.querySelector(".funnel-summary");
+      var urlField = form.querySelector(".funnel-url");
+      var done = form.querySelector(".funnel-done");
+      var current = 0;
+      var byPointer = false;
+
+      function val(name) {
+        var el = form.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.value : "";
+      }
+
+      function choiceText(name) {
+        var el = form.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.parentNode.querySelector(".choice-box").textContent.trim() : "";
+      }
+
+      // Website-Check braucht keine Budget-Frage
+      function isSkipped(step) {
+        return step.getAttribute("data-step") === "4" && val("projekt") === "Kostenloser Website-Check";
+      }
+
+      function visibleSteps() {
+        return steps.filter(function (s) { return !isSkipped(s); });
+      }
+
+      function isComplete(step) {
+        var names = {};
+        [].forEach.call(step.querySelectorAll('input[type="radio"]'), function (r) { names[r.name] = true; });
+        return Object.keys(names).every(function (n) { return !!val(n); });
+      }
+
+      function render(focus) {
+        var en = currentLang === "en";
+        steps.forEach(function (s, i) {
+          s.classList.toggle("is-active", i === current);
+          // übersprungene Schritte weder prüfen noch senden
+          var skip = isSkipped(s);
+          [].forEach.call(s.querySelectorAll("input"), function (inp) { inp.disabled = skip; });
+          var next = s.querySelector(".funnel-next");
+          if (next) next.disabled = !isComplete(s);
+        });
+        if (urlField) urlField.hidden = val("website_vorhanden") !== "Ja";
+
+        var vis = visibleSteps();
+        var pos = vis.indexOf(steps[current]) + 1;
+        bar.style.width = (pos / vis.length) * 100 + "%";
+        count.textContent = (en ? "Step " : "Schritt ") + pos + (en ? " of " : " von ") + vis.length;
+
+        if (steps[current].getAttribute("data-step") === "5") {
+          summary.textContent = "";
+          var parts = ["projekt", "branche", "budget", "zeitrahmen"].map(choiceText).filter(Boolean);
+          if (parts.length) {
+            summary.appendChild(document.createTextNode(en ? "Your selection: " : "Ihre Auswahl: "));
+            parts.forEach(function (p, i) {
+              if (i) summary.appendChild(document.createTextNode(" · "));
+              var b = document.createElement("strong");
+              b.textContent = p;
+              summary.appendChild(b);
+            });
+          }
+        }
+        if (focus) {
+          var title = steps[current].querySelector(".funnel-title");
+          if (title) title.focus({ preventScroll: true });
+          var top = form.getBoundingClientRect().top;
+          if (top < 70) {
+            window.scrollTo({ top: window.pageYOffset + top - 90, behavior: reduceMotion ? "auto" : "smooth" });
+          }
+        }
+      }
+
+      function go(dir) {
+        var i = current + dir;
+        while (i >= 0 && i < steps.length && isSkipped(steps[i])) i += dir;
+        if (i < 0 || i >= steps.length) return;
+        current = i;
+        render(true);
+      }
+
+      form.classList.add("funnel-ready");
+
+      // Klick/Touch auf eine Option springt weiter; Pfeiltasten nicht (Tastatur bestätigt mit „Weiter“)
+      form.addEventListener("pointerdown", function (e) { byPointer = !!e.target.closest(".choice"); });
+      form.addEventListener("keydown", function () { byPointer = false; });
+
+      form.addEventListener("change", function (e) {
+        if (e.target.type !== "radio") return;
+        var step = steps[current];
+        render(false);
+        var wantsUrl = e.target.name === "website_vorhanden" && e.target.value === "Ja";
+        if (byPointer && !wantsUrl && isComplete(step) && step.getAttribute("data-step") !== "5") {
+          setTimeout(function () { if (steps[current] === step) go(1); }, 260);
+        }
+        byPointer = false;
+      });
+
+      form.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-funnel]");
+        if (!btn) return;
+        if (btn.getAttribute("data-funnel") === "back") go(-1);
+        else if (isComplete(steps[current])) go(1);
+      });
+
+      document.addEventListener("luminary:lang", function () { render(false); });
+      render(false);
+
+      return {
+        isLast: function () { return steps[current].getAttribute("data-step") === "5"; },
+        next: function () { if (isComplete(steps[current])) go(1); },
+        subject: function () {
+          return "Neue Anfrage: " + [val("projekt"), val("branche")].filter(Boolean).join(" · ");
+        },
+        finish: function () {
+          // Beim Website-Check ist der Termin nur zweite Wahl (andere Texte, Button dezenter)
+          done.setAttribute("data-variant", val("projekt") === "Kostenloser Website-Check" ? "check" : "default");
+          form.reset();
+          current = 0;
+          render(false);
+          form.classList.add("is-done");
+          done.hidden = false;
+          done.focus();
+        }
+      };
+    })();
+  }
+
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      // Enter in einem frühen Schritt = weiter, nicht absenden
+      if (funnel && !funnel.isLast()) {
+        funnel.next();
+        return;
+      }
 
       // Honeypot: still verwerfen
       var gotcha = form.querySelector('[name="_gotcha"]');
@@ -205,6 +347,9 @@
         form.reportValidity();
         return;
       }
+
+      var subject = form.querySelector('[name="_subject"]');
+      if (funnel && subject) subject.value = funnel.subject();
 
       var submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
@@ -217,17 +362,22 @@
       })
         .then(function (res) {
           if (res.ok) {
-            form.reset();
-            setStatus(
-              "ok",
-              "Danke! Ihre Nachricht ist angekommen — wir melden uns innerhalb von 24 Stunden.",
-              "Thank you! Your message has been received — we'll get back to you within 24 hours."
-            );
+            setStatus("", "", "");
+            if (funnel) {
+              funnel.finish();
+            } else {
+              form.reset();
+              setStatus(
+                "ok",
+                "Danke! Ihre Nachricht ist angekommen. Wir melden uns in der Regel innerhalb von 24 Stunden.",
+                "Thank you! Your message has been received. We usually reply within 24 hours."
+              );
+            }
           } else {
             setStatus(
               "err",
-              "Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie an hallo@luminary.studio.",
-              "Something went wrong. Please try again or email hallo@luminary.studio."
+              "Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie an info@luminary-studio.at.",
+              "Something went wrong. Please try again or email info@luminary-studio.at."
             );
           }
         })
